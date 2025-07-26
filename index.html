@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Nuklal – nous méritons le meilleur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root { --black:#111; --gold:#d4af37; }
+    body{margin:0;font-family:Helvetica,Arial,sans-serif;background:var(--black);color:#fff;text-align:center}
+    header{background:var(--gold);padding:2rem}
+    header h1{margin:0;font-size:3rem;color:var(--black)}
+    .products{display:grid;gap:2rem;padding:2rem;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+    .card{background:#222;border-radius:8px;padding:1rem}
+    .card img{width:100%;border-radius:4px}
+    button{background:var(--gold);color:var(--black);border:none;padding:.5rem 1rem;cursor:pointer}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Nuklal</h1>
+    <p>nous méritons le meilleur</p>
+  </header>
+
+  <section class="products">
+    <!-- Produit 1 -->
+    <div class="card">
+      <img src="https://via.placeholder.com/300x400/000/fff?text=T-shirt" alt="T-shirt">
+      <h2>T-shirt Oversize Noir</h2>
+      <p>39 CHF</p>
+      <button onclick="alert('Acheter via Snipcart – clé à ajouter')">Acheter</button>
+    </div>
+
+    <!-- Produit 2 -->
+    <div class="card">
+      <img src="https://via.placeholder.com/300x400/000/fff?text=Sneakers" alt="Sneakers">
+      <h2>Sneakers Minimalistes</h2>
+      <p>89 CHF</p>
+      <button onclick="alert('Acheter via Snipcart – clé à ajouter')">Acheter</button>
+    </div>
+
+    <!-- Ajoute 3 autres produits de la même manière -->
+  </section>
+</body>
+</html>
