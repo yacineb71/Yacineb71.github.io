@@ -4,15 +4,22 @@
   <meta charset="UTF-8">
   <title>Nuklal – nous méritons le meilleur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mode & accessoires premium – livraison Suisse & monde.">
+  <link rel="icon" href="https://i.imgur.com/X8jQh7b.png">
   <style>
     :root { --black:#111; --gold:#d4af37; }
-    body{margin:0;font-family:Helvetica,Arial,sans-serif;background:var(--black);color:#fff;text-align:center}
-    header{background:var(--gold);padding:2rem}
-    header h1{margin:0;font-size:3rem;color:var(--black)}
-    .products{display:grid;gap:2rem;padding:2rem;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
-    .card{background:#222;border-radius:8px;padding:1rem}
-    .card img{width:100%;border-radius:4px}
-    button{background:var(--gold);color:var(--black);border:none;padding:.5rem 1rem;cursor:pointer}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Helvetica,Arial,sans-serif;background:var(--black);color:#fff;line-height:1.4}
+    header{background:var(--gold);padding:2rem;text-align:center}
+    header h1{margin:0;font-size:2.8rem;color:var(--black)}
+    header p{font-size:1.2rem;margin-top:.3rem}
+    .products{display:grid;gap:2rem;padding:2rem;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+    .card{background:#222;border-radius:8px;padding:1rem;display:flex;flex-direction:column;align-items:center}
+    .card img{width:100%;border-radius:6px;margin-bottom:.5rem}
+    .card h2{font-size:1.2rem;margin:.5rem 0}
+    .card .price{font-size:1.3rem;color:var(--gold);margin-bottom:.8rem}
+    button{background:var(--gold);color:var(--black);border:none;padding:.7rem 1.4rem;border-radius:4px;cursor:pointer;font-weight:600}
+    footer{background:#111;padding:1rem;text-align:center;font-size:.8rem}
   </style>
 </head>
 <body>
@@ -22,23 +29,77 @@
   </header>
 
   <section class="products">
-    <!-- Produit 1 -->
+    <!-- 5 produits -->
     <div class="card">
-      <img src="https://via.placeholder.com/300x400/000/fff?text=T-shirt" alt="T-shirt">
+      <img src="https://i.imgur.com/X8jQh7b.png" alt="T-shirt Oversize">
       <h2>T-shirt Oversize Noir</h2>
-      <p>39 CHF</p>
-      <button onclick="alert('Acheter via Snipcart – clé à ajouter')">Acheter</button>
+      <p class="price">39 CHF</p>
+      <button class="snipcart-add-item"
+              data-item-id="tshirt"
+              data-item-price="39"
+              data-item-name="T-shirt Oversize Noir"
+              data-item-image="https://i.imgur.com/X8jQh7b.png"
+              data-item-url="https://nuklal.com">Acheter</button>
     </div>
 
-    <!-- Produit 2 -->
     <div class="card">
-      <img src="https://via.placeholder.com/300x400/000/fff?text=Sneakers" alt="Sneakers">
+      <img src="https://i.imgur.com/7ZtVfXk.png" alt="Sneakers">
       <h2>Sneakers Minimalistes</h2>
-      <p>89 CHF</p>
-      <button onclick="alert('Acheter via Snipcart – clé à ajouter')">Acheter</button>
+      <p class="price">89 CHF</p>
+      <button class="snipcart-add-item"
+              data-item-id="sneakers"
+              data-item-price="89"
+              data-item-name="Sneakers Minimalistes"
+              data-item-image="https://i.imgur.com/7ZtVfXk.png"
+              data-item-url="https://nuklal.com">Acheter</button>
     </div>
 
-    <!-- Ajoute 3 autres produits de la même manière -->
+    <div class="card">
+      <img src="https://i.imgur.com/L3cJh4R.png" alt="Casquette">
+      <h2>Casquette Noir/Or</h2>
+      <p class="price">25 CHF</p>
+      <button class="snipcart-add-item"
+              data-item-id="cap"
+              data-item-price="25"
+              data-item-name="Casquette Noir/Or"
+              data-item-image="https://i.imgur.com/L3cJh4R.png"
+              data-item-url="https://nuklal.com">Acheter</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/M9kL5zU.png" alt="Sac">
+      <h2>Sac Bandoulière</h2>
+      <p class="price">59 CHF</p>
+      <button class="snipcart-add-item"
+              data-item-id="bag"
+              data-item-price="59"
+              data-item-name="Sac Bandoulière"
+              data-item-image="https://i.imgur.com/M9kL5zU.png"
+              data-item-url="https://nuklal.com">Acheter</button>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/F5tQ9sA.png" alt="Hoodie">
+      <h2>Hoodie Oversize</h2>
+      <p class="price">69 CHF</p>
+      <button class="snipcart-add-item"
+              data-item-id="hoodie"
+              data-item-price="69"
+              data-item-name="Hoodie Oversize"
+              data-item-image="https://i.imgur.com/F5tQ9sA.png"
+              data-item-url="https://nuklal.com">Acheter</button>
+    </div>
   </section>
+
+  <footer>
+    © 2025 Nuklal – livraison Suisse & monde.
+  </footer>
+
+  <!-- Panier Snipcart -->
+  <script src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js" async></script>
+  <div hidden id="snipcart"
+       data-api-key="NzNjZGY2YzgtMzI2MC00NTgyLWFiY2UtMzcyYzU2N2U1NjM1NjM4ODkxNzA0MDQ3MjU1NzM5"
+       data-currency="chf"
+       data-locale="fr"></div>
 </body>
 </html>
