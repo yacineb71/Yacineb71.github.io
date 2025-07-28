@@ -19,46 +19,51 @@
     .card h2{font-size:1.2rem;margin:.5rem 0}
     .card .price{font-size:1.3rem;color:var(--gold);margin-bottom:.8rem}
     button{background:var(--gold);color:var(--black);border:none;padding:.7rem 1.4rem;border-radius:4px;cursor:pointer;font-weight:600}
-    footer{background:#111;padding:1rem;text-align:center;font-size:.8rem}
-    /* Navbar */
-nav{background:var(--gold);display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.2rem;position:sticky;top:0;z-index:999}
-nav a{color:var(--black);text-decoration:none;font-weight:600;margin:0 .6rem}
-.brand{font-size:1.4rem}
-.hamburger{display:none;font-size:1.6rem;cursor:pointer}
-@media(max-width:600px){.nav-links{display:none;flex-direction:column}.hamburger{display:block}}
+    nav{background:var(--gold);display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.2rem;position:sticky;top:0;z-index:999}
+    nav a{color:var(--black);text-decoration:none;font-weight:600;margin:0 .6rem}
+    .brand{font-size:1.4rem}
+    .hamburger{display:none;font-size:1.6rem;cursor:pointer}
+    .nav-links{display:flex;align-items:center}
+    @media(max-width:600px){
+      .nav-links{display:none;flex-direction:column;background:var(--gold);position:absolute;top:60px;right:0;width:100%}
+      .nav-links a{padding:.5rem 1rem;border-top:1px solid #000}
+      .hamburger{display:block}
+    }
     footer{background:#111;color:#fff;padding:2rem 1rem;font-size:.9rem}
-footer h3{color:var(--gold);margin-bottom:.5rem}
-.footer-inner{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));max-width:1200px;margin:auto}
-.footer-bottom{text-align:center;margin-top:1.5rem;font-size:.8rem}
-footer ul{list-style:none;padding:0;margin:0}
-footer a{color:#fff;text-decoration:none}
-footer a:hover{color:var(--gold)}
+    footer h3{color:var(--gold);margin-bottom:.5rem}
+    .footer-inner{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));max-width:1200px;margin:auto}
+    .footer-bottom{text-align:center;margin-top:1.5rem;font-size:.8rem}
+    footer ul{list-style:none;padding:0;margin:0}
+    footer a{color:#fff;text-decoration:none}
+    footer a:hover{color:var(--gold)}
   </style>
 </head>
 <body>
-<section id="home" class="home"></section>
+
   <!-- Navbar -->
-<nav id="navbar">
-  <a href="#" class="brand">Nuklal</a>
-  <div class="nav-links">
-  <a href="#home">Accueil</a>
-  <a href="#products">Produits</a>
-  <a href="#about">À propos</a>
-  <a href="#contact">Contact</a>
-<a href="cgv.html">CGV</a>
-</div>
-  <span class="hamburger">☰</span>
-</nav>
-  <header>
+  <nav>
+    <a href="#" class="brand">Nuklal</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Accueil</a>
+      <a href="#products">Produits</a>
+      <a href="#about">À propos</a>
+      <a href="#contact">Contact</a>
+      <a href="cgv.html">CGV</a>
+    </div>
+    <span class="hamburger" onclick="toggleMenu()">☰</span>
+  </nav>
+
+  <header id="home">
     <h1>Nuklal</h1>
     <p>nous méritons le meilleur</p>
   </header>
-<section id="products" class="products">
-  <!-- Widget AliExpress -->
-<!-- Widget AliExpress -->
-<script src="https://static.elfsight.com/platform/platform.js" async></script>
-<div class="elfsight-app-1acf479f-fe36-4d8f-9835-bcf70f175575" data-elfsight-app-lazy></div>
-    <!-- 5 produits -->
+
+  <!-- Produits -->
+  <section id="products" class="products">
+    <!-- Widget AliExpress (à adapter) -->
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    <div class="elfsight-app-1acf479f-fe36-4d8f-9835-bcf70f175575" data-elfsight-app-lazy></div>
+
     <div class="card">
       <img src="https://i.imgur.com/X8jQh7b.png" alt="T-shirt Oversize">
       <h2>T-shirt Oversize Noir</h2>
@@ -119,77 +124,72 @@ footer a:hover{color:var(--gold)}
               data-item-url="https://nuklal.com">Acheter</button>
     </div>
   </section>
-  <!-- Elfsight AliExpress Reviews | Untitled AliExpress Reviews -->
-<script src="https://static.elfsight.com/platform/platform.js" async></script>
-<div class="elfsight-app-1acf479f-fe36-4d8f-9835-bcf70f175575" data-elfsight-app-lazy></div>
-<!-- À propos -->
-<section id="about" style="padding:2rem;max-width:800px;margin:auto">
-  <h2>À propos</h2>
-  <p>
-    Nuklal, c’est la conviction que nous méritons tous le meilleur : des pièces uniques, des matériaux de qualité, une livraison rapide.  
-    Notre boutique en ligne vous propose une sélection pointue de vêtements et accessoires, livrés en Suisse et dans le monde entier.
-  </p>
-</section>
 
-<!-- Contact -->
-<section id="contact" style="padding:2rem;max-width:600px;margin:auto">
-  <h2>Contact</h2>
-  <p>Pour toute question, commande spéciale ou retour :</p>
-  <p><strong>Email&nbsp;:</strong> <a href="mailto:contact@nuklal.com" style="color:var(--gold)">contact@nuklal.com</a></p>
-</section>
-  <!-- Pied de page -->
-<footer id="footer">
-  <div class="footer-inner">
-    <div class="footer-col">
-      <h3>Nuklal</h3>
-      <p>nous méritons le meilleur</p>
+  <!-- À propos -->
+  <section id="about" style="padding:2rem;max-width:800px;margin:auto">
+    <h2>À propos</h2>
+    <p>
+      Nuklal, c’est la conviction que nous méritons tous le meilleur : des pièces uniques, des matériaux de qualité, une livraison rapide.<br>
+      Notre boutique en ligne vous propose une sélection pointue de vêtements et accessoires, livrés en Suisse et dans le monde entier.
+    </p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="padding:2rem;max-width:600px;margin:auto">
+    <h2>Contact</h2>
+    <p>Pour toute question, commande spéciale ou retour :</p>
+    <p><strong>Email&nbsp;:</strong> <a href="mailto:contact@nuklal.com" style="color:var(--gold)">contact@nuklal.com</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h3>Nuklal</h3>
+        <p>nous méritons le meilleur</p>
+      </div>
+      <div>
+        <h3>Liens utiles</h3>
+        <ul>
+          <li><a href="#home">Accueil</a></li>
+          <li><a href="#products">Produits</a></li>
+          <li><a href="cgv.html">CGV</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Mentions légales</h3>
+        <ul>
+          <li><strong>Éditeur :</strong> Yacine B. (entrepreneur individuel)</li>
+          <li><strong>Adresse :</strong> [ta rue, CP, ville, Suisse]</li>
+          <li><strong>Email :</strong> <a href="mailto:contact@nuklal.com">contact@nuklal.com</a></li>
+          <li><strong>TVA :</strong> [numéro ou « TVA non applicable »]</li>
+          <li><strong>Hébergeur :</strong> GitHub, Inc. – USA</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Suivez-nous</h3>
+        <a href="https://instagram.com/nuklal" target="_blank" rel="noopener">Instagram</a>
+      </div>
     </div>
-
-    <div class="footer-col">
-      <h3>Liens utiles</h3>
-      <ul>
-        <li><a href="/">Accueil</a></li>
-        <li><a href="#products">Produits</a></li>
-        <li><a href="cgv.html">CGV</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <div class="footer-bottom">
+      © 2025 Nuklal – Tous droits réservés.
     </div>
+  </footer>
 
-    <div class="footer-col">
-      <h3>Mentions légales</h3>
-      <ul>
-        <li><strong>Éditeur :</strong> Yacine B. (entrepreneur individuel)</li>
-        <li><strong>Adresse :</strong> [ta rue, CP, ville, Suisse]</li>
-        <li><strong>Email :</strong> <a href="mailto:contact@nuklal.com">contact@nuklal.com</a></li>
-        <li><strong>TVA :</strong> [numéro ou « TVA non applicable »]</li>
-        <li><strong>Hébergeur :</strong> GitHub, Inc. – 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h3>Suivez-nous</h3>
-      <a href="https://instagram.com/nuklal" target="_blank" rel="noopener">Instagram</a>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    © 2025 Nuklal – Tous droits réservés.
-  </div>
-</footer>
-
-  <!-- Panier Snipcart -->
+  <!-- Snipcart -->
   <script src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js" async></script>
   <div hidden id="snipcart"
        data-api-key="YTBjMTIyZDUtMmI5Ni00NjNlLTliYWUtYjI0NjM1OTMwYzRmNjM4ODkxNzA0MDQ3MjU1NzM5"
        data-currency="chf"
        data-locale="fr"></div>
-  <script>
-    window.SnipcartSettings = {
-        publicApiKey: 'YTBjMTIyZDUtMmI5Ni00NjNlLTliYWUtYjI0NjM1OTMwYzRmNjM4ODkxNzA0MDQ3MjU1NzM5',
-        loadStrategy: 'on-user-interaction',
-    };
 
-    (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
+  <!-- JS menu mobile -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    }
   </script>
 </body>
 </html>
