@@ -20,15 +20,32 @@
     .card .price{font-size:1.3rem;color:var(--gold);margin-bottom:.8rem}
     button{background:var(--gold);color:var(--black);border:none;padding:.7rem 1.4rem;border-radius:4px;cursor:pointer;font-weight:600}
     footer{background:#111;padding:1rem;text-align:center;font-size:.8rem}
+    /* Navbar */
+nav{background:var(--gold);display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.2rem;position:sticky;top:0;z-index:999}
+nav a{color:var(--black);text-decoration:none;font-weight:600;margin:0 .6rem}
+.brand{font-size:1.4rem}
+.hamburger{display:none;font-size:1.6rem;cursor:pointer}
+@media(max-width:600px){.nav-links{display:none;flex-direction:column}.hamburger{display:block}}
   </style>
 </head>
 <body>
+  <!-- Navbar -->
+<nav id="navbar">
+  <a href="#" class="brand">Nuklal</a>
+  <div class="nav-links">
+    <a href="#home">Accueil</a>
+    <a href="#products">Produits</a>
+    <a href="#about">À propos</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <span class="hamburger">☰</span>
+</nav>
   <header>
     <h1>Nuklal</h1>
     <p>nous méritons le meilleur</p>
   </header>
-
-  <section class="products">
+<section id="products" class="products">
+  
     <!-- 5 produits -->
     <div class="card">
       <img src="https://i.imgur.com/X8jQh7b.png" alt="T-shirt Oversize">
