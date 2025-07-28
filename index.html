@@ -26,6 +26,13 @@ nav a{color:var(--black);text-decoration:none;font-weight:600;margin:0 .6rem}
 .brand{font-size:1.4rem}
 .hamburger{display:none;font-size:1.6rem;cursor:pointer}
 @media(max-width:600px){.nav-links{display:none;flex-direction:column}.hamburger{display:block}}
+    footer{background:#111;color:#fff;padding:2rem 1rem;font-size:.9rem}
+footer h3{color:var(--gold);margin-bottom:.5rem}
+.footer-inner{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));max-width:1200px;margin:auto}
+.footer-bottom{text-align:center;margin-top:1.5rem;font-size:.8rem}
+footer ul{list-style:none;padding:0;margin:0}
+footer a{color:#fff;text-decoration:none}
+footer a:hover{color:var(--gold)}
   </style>
 </head>
 <body>
@@ -124,9 +131,45 @@ nav a{color:var(--black);text-decoration:none;font-weight:600;margin:0 .6rem}
   <p>Pour toute question, commande spéciale ou retour :</p>
   <p><strong>Email&nbsp;:</strong> <a href="mailto:contact@nuklal.com" style="color:var(--gold)">contact@nuklal.com</a></p>
 </section>
-  <footer>
-    © 2025 Nuklal – livraison Suisse & monde.
-  </footer>
+  <!-- Pied de page -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h3>Nuklal</h3>
+      <p>nous méritons le meilleur</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Liens utiles</h3>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="#products">Produits</a></li>
+        <li><a href="cgv.html">CGV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Mentions légales</h3>
+      <ul>
+        <li><strong>Éditeur :</strong> Yacine B. (entrepreneur individuel)</li>
+        <li><strong>Adresse :</strong> [ta rue, CP, ville, Suisse]</li>
+        <li><strong>Email :</strong> <a href="mailto:contact@nuklal.com">contact@nuklal.com</a></li>
+        <li><strong>TVA :</strong> [numéro ou « TVA non applicable »]</li>
+        <li><strong>Hébergeur :</strong> GitHub, Inc. – 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Suivez-nous</h3>
+      <a href="https://instagram.com/nuklal" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 Nuklal – Tous droits réservés.
+  </div>
+</footer>
 
   <!-- Panier Snipcart -->
   <script src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js" async></script>
