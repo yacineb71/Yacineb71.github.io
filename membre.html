@@ -40,8 +40,8 @@
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script>
     const sb = supabase.createClient(
-      'https://votre-projet.supabase.co',
-      'votre-clé-publique'
+      'https://clylwpqwutslomyulopp.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNseWx3cHF3dXRzbG9teXVsb3BwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM3ODg2NjAsImV4cCI6MjA2OTM2NDY2MH0.PgMpOD8iJSLAM-6-_dJrlSoIrgEsfi0M3fRgs3ojMOQ'
     );
     async function checkUser() {
       const { data: { user } } = await sb.auth.getUser();
