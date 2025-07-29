@@ -4,8 +4,18 @@
   <meta charset="UTF-8">
   <title>Nuklal – nous méritons le meilleur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Mode & accessoires premium – livraison Suisse & monde.">
+  <meta name="description" content="Boutique premium de vêtements et accessoires – livraison Suisse & monde. Collections uniques, matériaux de qualité, paiement sécurisé.">
+  <meta name="keywords" content="mode premium, vêtements, accessoires, Suisse, livraison express">
+  <link rel="canonical" href="https://nuklal.com">
+  <meta property="og:title" content="Nuklal – nous méritons le meilleur">
+  <meta property="og:description" content="Découvre nos collections premium.">
+  <meta property="og:image" content="https://nuklal.com/favicon-512.png">
+  <meta property="og:url" content="https://nuklal.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#d4af37">
   <link rel="icon" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
   <style>
     :root {
       --black:#111;
@@ -21,7 +31,6 @@
       line-height:1.6;
       transition:background .3s,color .3s;
     }
-    /* NAVBAR */
     nav{
       background:var(--gold);
       display:flex;
@@ -39,11 +48,13 @@
       .nav-links a{padding:.8rem;border-top:1px solid #000}
       .hamburger{display:block}
     }
+    /* PROMO BAR */
+    #promoBar{position:fixed;top:0;left:0;right:0;background:#d4af37;color:#111;padding:.5rem 1rem;text-align:center;font-weight:600;z-index:1000}
+    #promoBar button{margin-left:.5rem;background:#111;color:#d4af37;border:none;padding:.2rem .5rem;border-radius:4px;cursor:pointer}
     /* HERO PARALLAX */
     .hero-parallax{
       height:60vh;
-      background:url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-      background-attachment:fixed;
+      background:url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat fixed;
       display:flex;align-items:center;justify-content:center;
       color:#fff;text-align:center;font-size:2rem;font-weight:700;
       text-shadow:0 0 10px rgba(0,0,0,.6);
@@ -53,15 +64,11 @@
     .filters label{font-size:.9rem;display:flex;flex-direction:column;gap:.2rem}
     .filters select,.filters input{padding:.4rem .6rem;border-radius:var(--radius);border:none;font-size:.9rem}
     /* GRILLE PRODUITS */
-    .products{
-      display:grid;gap:2rem;
-      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-    }
+    .products{display:grid;gap:2rem;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
     .card{
       background:var(--gray);border-radius:var(--radius);padding:1rem;
-      display:flex;flex-direction:column;align-items:center;
-      position:relative;opacity:0;transform:translateY(20px);
-      transition:transform .3s,opacity .6s;
+      display:flex;flex-direction:column;align-items:center;position:relative;
+      opacity:0;transform:translateY(20px);transition:transform .3s,opacity .6s;
     }
     .card.show{opacity:1;transform:translateY(0)}
     .card:hover{transform:translateY(-4px)}
@@ -79,8 +86,8 @@
     footer{background:#000;color:#fff;padding:2rem 1rem;font-size:.9rem}
     .footer-inner{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));max-width:1200px;margin:auto}
     footer h3{color:var(--gold);margin-bottom:.5rem}
-    footer a{color:#fff;text-decoration:none}
-    footer a:hover{color:var(--gold)}
+    footer a{color:#fff;text-decoration:none}footer a:hover{color:var(--gold)}
+    .footer-bottom{text-align:center;margin-top:1.5rem;font-size:.8rem}
     /* TOAST */
     #toast{
       position:fixed;bottom:20px;left:50%;
@@ -90,9 +97,15 @@
       opacity:0;transition:transform .3s,opacity .3s;z-index:9999;
     }
     #toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+    /* POP-UP */
+    #exitPop{position:fixed;inset:0;background:rgba(0,0,0,.7);opacity:0;visibility:hidden;transition:.3s;display:flex;align-items:center;justify-content:center;z-index:9999}
+    #exitPop>div{background:#111;color:#fff;padding:2rem;border-radius:var(--radius);max-width:400px;text-align:center}
   </style>
 </head>
 <body>
+  <!-- Promo banner -->
+  <div id="promoBar">🔥 -10 % ce week-end avec le code WEEK10 → <button onclick="copyCode()">Copier</button></div>
+
   <!-- Navbar -->
   <nav>
     <a href="#" class="brand">Nuklal</a>
@@ -121,16 +134,15 @@
     <p>nous méritons le meilleur</p>
   </header>
 
+  <!-- Urgency counter -->
+  <div id="counter" style="text-align:center;margin:1rem;font-size:1rem;color:var(--gold);">
+    ⏳ <span id="count">3</span> articles restants – ne ratez pas l’offre !
+  </div>
+
   <!-- Filtres -->
   <section class="filters">
     <label>Catégorie
-      <select id="filterCategory">
-        <option value="all">Tous</option>
-        <option value="tshirt">T-shirt</option>
-        <option value="hoodie">Hoodie</option>
-        <option value="sneakers">Sneakers</option>
-        <option value="accessoire">Accessoire</option>
-      </select>
+      <select id="filterCategory"><option value="all">Tous</option><option value="tshirt">T-shirt</option><option value="hoodie">Hoodie</option><option value="sneakers">Sneakers</option><option value="accessoire">Accessoire</option></select>
     </label>
     <label>Prix max
       <input type="range" id="priceRange" min="0" max="100" value="100">
@@ -152,7 +164,6 @@
 
   <!-- Produits -->
   <section id="products" class="products">
-    <!-- T-shirt -->
     <div class="card" data-category="tshirt" data-price="39" data-color="noir" data-size="M,L,XL" data-pop="95" data-stock="in">
       <img src="https://i.imgur.com/X8jQh7b.png" alt="T-shirt Oversize">
       <div class="quick-info">Tailles : M, L, XL</div>
@@ -167,7 +178,6 @@
       <button class="wish-btn" data-id="tshirt" style="margin-top:.5rem;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:.3rem .6rem;border-radius:var(--radius);cursor:pointer">♡</button>
     </div>
 
-    <!-- Sneakers -->
     <div class="card" data-category="sneakers" data-price="89" data-color="blanc" data-size="40,41,42,43" data-pop="88" data-stock="in">
       <img src="https://i.imgur.com/7ZtVfXk.png" alt="Sneakers">
       <div class="quick-info">Tailles : 40-43</div>
@@ -182,7 +192,6 @@
       <button class="wish-btn" data-id="sneakers" style="margin-top:.5rem;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:.3rem .6rem;border-radius:var(--radius);cursor:pointer">♡</button>
     </div>
 
-    <!-- Casquette -->
     <div class="card" data-category="accessoire" data-price="25" data-color="noir,or" data-size="unique" data-pop="92" data-stock="in">
       <img src="https://i.imgur.com/L3cJh4R.png" alt="Casquette">
       <div class="quick-info">Taille unique</div>
@@ -197,7 +206,6 @@
       <button class="wish-btn" data-id="cap" style="margin-top:.5rem;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:.3rem .6rem;border-radius:var(--radius);cursor:pointer">♡</button>
     </div>
 
-    <!-- Sac -->
     <div class="card" data-category="accessoire" data-price="59" data-color="noir" data-size="unique" data-pop="70" data-stock="in">
       <img src="https://i.imgur.com/M9kL5zU.png" alt="Sac">
       <div class="quick-info">Taille unique</div>
@@ -212,7 +220,6 @@
       <button class="wish-btn" data-id="bag" style="margin-top:.5rem;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:.3rem .6rem;border-radius:var(--radius);cursor:pointer">♡</button>
     </div>
 
-    <!-- Hoodie -->
     <div class="card" data-category="hoodie" data-price="69" data-color="noir" data-size="M,L,XL" data-pop="85" data-stock="in">
       <img src="https://i.imgur.com/F5tQ9sA.png" alt="Hoodie">
       <div class="quick-info">Tailles : M, L, XL</div>
@@ -269,12 +276,26 @@
     <div class="footer-bottom">© 2025 Nuklal – Tous droits réservés.</div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Pop-up exit-intent -->
+  <div id="exitPop">
+    <div>
+      <h3>🎁 -5 % de réduction</h3>
+      <p>Abonne-toi à notre newsletter et gagne 5 % de réduction immédiate.</p>
+      <input type="email" id="emailPop" placeholder="ton@email.com">
+      <button onclick="popSubmit()">Recevoir ma réduction</button>
+      <button onclick="closePop()">Non merci</button>
+    </div>
+  </div>
+
+  <!-- Snipcart -->
   <script src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js" async></script>
   <div hidden id="snipcart"
        data-api-key="YTBjMTIyZDUtMmI5Ni00NjNlLTliYWUtYjI0NjM1OTMwYzRmNjM4ODkxNzA0MDQ3MjU1NzM5"
        data-currency="chf"
        data-locale="fr"></div>
+
+  <!-- Lazy-load -->
+  <script src="https://unpkg.com/lazysizes@5.3.2/lazysizes.min.js" async></script>
 
   <script>
     /* Menu mobile */
@@ -306,7 +327,30 @@
       localStorage.setItem('theme', isDark ? 'light' : 'dark');
     });
 
-    /* Filtres, tri, stock + wishlist */
+    /* Promo code */
+    function copyCode() { navigator.clipboard.writeText('WEEK10'); alert('Code copié !'); }
+
+    /* Counter */
+    setInterval(() => {
+      const n = Math.max(1, parseInt(document.getElementById('count').textContent) - 1);
+      document.getElementById('count').textContent = n;
+    }, 15000);
+
+    /* Exit pop */
+    let popShown = false;
+    function closePop() { document.getElementById('exitPop').style.visibility = 'hidden'; }
+    function popSubmit() {
+      const email = document.getElementById('emailPop').value;
+      if (email) { alert('Merci ! Le code 5OFF t’a été envoyé.'); closePop(); }
+    }
+    document.addEventListener('mouseleave', () => {
+      if (!popShown) { document.getElementById('exitPop').style.visibility = 'visible'; popShown = true; }
+    });
+
+    /* Service worker */
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+
+    /* Filtres + wishlist */
     const cards = [...document.querySelectorAll('.card')];
     const filterCategory = document.getElementById('filterCategory');
     const priceRange = document.getElementById('priceRange');
@@ -347,7 +391,6 @@
       cards.forEach(c => { c.classList.remove('show'); c.style.display = 'none'; });
       list.forEach(c => { c.style.display = 'flex'; c.classList.add('show'); });
     }
-
     [filterCategory, priceRange, filterColor, filterSize, sortBy, stockFilter].forEach(el =>
       el.addEventListener('input', update)
     );
@@ -362,7 +405,8 @@
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
       }
     });
-    /* Toast + scroll reveal */
+
+    /* Toast + reveal */
     const observer = new IntersectionObserver(entries => entries.forEach(e => e.target.classList.add('show')));
     cards.forEach(c => observer.observe(c));
 
