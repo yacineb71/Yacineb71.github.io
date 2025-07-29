@@ -37,6 +37,11 @@
       .nav-links a{padding:.8rem;border-top:1px solid #000}
       .hamburger{display:block}
     }
+    #promoBar{
+  position:fixed;top:0;left:0;right:0;background:#d4af37;color:#111;
+  padding:.5rem 1rem;text-align:center;font-weight:600;z-index:1000
+}
+#promoBar + nav{ margin-top: 3.3rem; } /* ← ajoute cette ligne */
     #promoBar{position:fixed;top:0;left:0;right:0;background:#d4af37;color:#111;padding:.5rem 1rem;text-align:center;font-weight:600;z-index:1000}
     #promoBar button{margin-left:.5rem;background:#111;color:#d4af37;border:none;padding:.2rem .5rem;border-radius:4px;cursor:pointer}
     .hero-parallax{height:60vh;background:url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat fixed;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;font-size:2rem;font-weight:700;text-shadow:0 0 10px rgba(0,0,0,.6)}
@@ -67,7 +72,6 @@
 <body>
   <!-- Promo banner -->
   <div id="promoBar">🔥 -10 % ce week-end avec le code WEEK10 → <button onclick="copyCode()">Copier</button></div>
-#promoBar + nav { margin-top: 3.3rem; } /* hauteur de la bannière */
   <!-- Navbar -->
   <nav>
   <a href="#" class="brand">Nuklal</a>
