@@ -194,17 +194,327 @@
 </head>
 
 <body>
-  <!-- [VOTRE CONTENU EXISTANT AVEC LES CORRECTIONS APPLIQUÉES] -->
-  <!-- Note : J'ai condensé pour la lisibilité. Le code complet est identique au vôtre avec : -->
-  <!-- 1. Toutes les corrections d'accessibilité -->
-  <!-- 2. Les balises sémantiques améliorées -->
-  <!-- 3. Les performances optimisées -->
+  <!-- Promo banner -->
+  <div id="promoBar">
+    🔥 -10 % ce week-end avec le code WEEK10 →
+    <button onclick="copyCode()" aria-label="Copier le code promo">Copier</button>
+  </div>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#" class="brand" aria-label="Accueil Nuklal">Nuklal</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Accueil</a>
+      <a href="#products">Produits</a>
+      <a href="#about">À propos</a>
+      <a href="#contact">Contact</a>
+      <a href="cgv.html" target="_blank" rel="noopener">CGV</a>
+      <a href="membre.html">Espace membre</a>
+    </div>
+    <button id="themeToggle" title="Mode sombre/clair" aria-label="Changer le thème">🌙</button>
+    <span class="hamburger" onclick="toggleMenu()" aria-label="Menu mobile">☰</span>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-parallax" aria-labelledby="hero-title">
+    <div>
+      <h2 id="hero-title">Collection Automne 2025</h2>
+      <p>Nouveautés premium, livraison express.</p>
+    </div>
+  </section>
+
+  <!-- Counter -->
+  <div id="counter" style="text-align:center;margin:1rem;font-size:1rem;color:var(--gold);">
+    ⏳ <span id="count">3</span> articles restants – ne ratez pas l’offre !
+  </div>
+
+  <!-- Filtres -->
+  <section class="filters" aria-label="Filtres produits">
+    <label>Catégorie
+      <select id="filterCategory">
+        <option value="all">Tous</option>
+        <option value="tshirt">T-shirt</option>
+        <option value="hoodie">Hoodie</option>
+        <option value="sneakers">Sneakers</option>
+        <option value="accessoire">Accessoire</option>
+      </select>
+    </label>
+    <label>Prix max
+      <input type="range" id="priceRange" min="0" max="100" value="100" aria-label="Prix maximum">
+      <span id="priceValue">100 CHF</span>
+    </label>
+    <label>Couleur
+      <select id="filterColor">
+        <option value="all">Toutes</option>
+        <option value="noir">Noir</option>
+        <option value="blanc">Blanc</option>
+        <option value="or">Or</option>
+      </select>
+    </label>
+    <label>Taille
+      <select id="filterSize">
+        <option value="all">Toutes</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select>
+    </label>
+    <label>Trier
+      <select id="sortBy">
+        <option value="new">Nouveauté</option>
+        <option value="price">Prix ↓</option>
+        <option value="pop">Popularité</option>
+      </select>
+    </label>
+    <label>Stock
+      <select id="stockFilter">
+        <option value="all">Tous</option>
+        <option value="in">En stock</option>
+        <option value="out">Épuisé</option>
+      </select>
+    </label>
+  </section>
+
+  <!-- Produits -->
+  <section id="products" class="products" aria-label="Nos produits">
+    <!-- Exemple de produit -->
+    <div class="card" data-category="tshirt" data-price="39" data-color="noir" data-size="M,L,XL" data-pop="95" data-stock="in">
+      <img src="https://i.imgur.com/X8jQh7b.png" alt="T-shirt Oversize Noir" loading="lazy">
+      <div class="quick-info">Tailles : M, L, XL</div>
+      <h2>T-shirt Oversize Noir</h2>
+      <p class="price">39 CHF</p>
+      <button class="snipcart-add-item"
+              data-item-id="tshirt"
+              data-item-price="39"
+              data-item-name="T-shirt Oversize Noir"
+              data-item-image="https://i.imgur.com/X8jQh7b.png"
+              data-item-url="https://nuklal.com">Acheter</button>
+      <button class="wish-btn" data-id="tshirt" aria-label="Ajouter aux favoris">♡</button>
+    </div>
+
+    <!-- Ajoutez ici les autres produits avec la même structure -->
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="padding:2rem 1rem;max-width:600px;margin:auto">
+    <h2>Contact</h2>
+    <form action="https://formspree.io/f/xrblkogl" method="POST" style="display:grid;gap:1rem">
+      <label>Nom
+        <input type="text" name="nom" required>
+      </label>
+      <label>Email
+        <input type="email" name="email" required>
+      </label>
+      <label>Message
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <!-- À propos -->
+  <section id="about" style="padding:2rem 1rem;max-width:800px;margin:auto;text-align:center">
+    <h2>À propos</h2>
+    <p>Nuklal, c’est la conviction que nous méritons tous le meilleur : des pièces uniques, des matériaux de qualité, une livraison rapide.<br>
+    Notre boutique en ligne vous propose une sélection pointue de vêtements et accessoires, livrés en Suisse et dans le monde entier.</p>
+  </section>
+
+  <!-- Badges -->
+  <section style="padding:2rem 1rem;display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;font-size:.9rem;text-align:center">
+    <div style="display:flex;align-items:center;gap:.5rem;color:var(--gold)">
+      ✅ Livraison gratuite dès 100 CHF
+    </div>
+    <div style="display:flex;align-items:center;gap:.5rem;color:var(--gold)">
+      🔒 Paiement sécurisé SSL
+    </div>
+    <div style="display:flex;align-items:center;gap:.5rem;color:var(--gold)">
+      🔄 Retours gratuits 30 jours
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h3>Nuklal</h3>
+        <p>nous méritons le meilleur</p>
+      </div>
+      <div>
+        <h3>Liens utiles</h3>
+        <ul>
+          <li><a href="#home">Accueil</a></li>
+          <li><a href="#products">Produits</a></li>
+          <li><a href="cgv.html" target="_blank" rel="noopener">CGV</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Mentions légales</h3>
+        <ul>
+          <li><strong>Éditeur :</strong> Yacine B.</li>
+          <li><strong>Email :</strong> <a href="mailto:contact@nuklal.com">contact@nuklal.com</a></li>
+          <li><strong>Hébergeur :</strong> GitHub, Inc. – USA</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Suivez-nous</h3>
+        <div style="display:flex;gap:.8rem">
+          <a href="https://instagram.com/nuklal" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+          <a href="https://tiktok.com/@nuklal" target="_blank" rel="noopener" aria-label="TikTok">🎵</a>
+          <a href="https://pinterest.com/nuklal" target="_blank" rel="noopener" aria-label="Pinterest">📌</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Nuklal – Tous droits réservés.</div>
+  </footer>
+
+  <!-- Snipcart -->
+  <script src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js" async></script>
+  <div hidden id="snipcart"
+       data-api-key="YTBjMTIyZDUtMmI5Ni00NjNlLTliYWUtYjI0NjM1OTMwYzRmNjM4ODkxNzA0MDQ3MjU1NzM5"
+       data-currency="chf"
+       data-locale="fr"></div>
+
+  <!-- Lazyload -->
+  <script src="https://unpkg.com/lazysizes@5.3.2/lazysizes.min.js" async></script>
 
   <script>
-    // [VOTRE SCRIPT EXISTANT AVEC :]
-    // 1. Gestion d'erreurs ajoutée
-    // 2. Cache optimisé
-    // 3. Analytics intégré
+    /* Menu mobile */
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    /* Mode sombre/clair */
+    const toggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    const isDark = saved === 'dark';
+
+    function applyTheme(dark) {
+      root.style.setProperty('--black', dark ? '#fff' : '#111');
+      root.style.setProperty('--gold', dark ? '#b8860b' : '#d4af37');
+      root.style.setProperty('--gray', dark ? '#f5f5f5' : '#222');
+      document.body.style.background = dark ? '#fff' : '#111';
+      document.body.style.color = dark ? '#111' : '#fff';
+      toggle.textContent = dark ? '☀️' : '🌙';
+    }
+
+    applyTheme(isDark);
+    toggle.addEventListener('click', () => {
+      const newTheme = !root.style.getPropertyValue('--black') || root.style.getPropertyValue('--black') === '#111';
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+    });
+
+    /* Promo code */
+    function copyCode() {
+      navigator.clipboard.writeText('WEEK10');
+      alert('Code copié !');
+    }
+
+    /* Counter */
+    setInterval(() => {
+      const n = Math.max(1, parseInt(document.getElementById('count').textContent) - 1);
+      document.getElementById('count').textContent = n;
+    }, 15000);
+
+    /* Filtres + wishlist */
+    const cards = [...document.querySelectorAll('.card')];
+    const filterCategory = document.getElementById('filterCategory');
+    const priceRange = document.getElementById('priceRange');
+    const priceValue = document.getElementById('priceValue');
+    const filterColor = document.getElementById('filterColor');
+    const filterSize = document.getElementById('filterSize');
+    const sortBy = document.getElementById('sortBy');
+    const stockFilter = document.getElementById('stockFilter');
+    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    function update() {
+      const category = filterCategory.value;
+      const maxPrice = parseInt(priceRange.value);
+      const color = filterColor.value;
+      const size = filterSize.value;
+      const stock = stockFilter.value;
+      const sort = sortBy.value;
+      priceValue.textContent = maxPrice + ' CHF';
+
+      let list = cards.filter(card => {
+        const cat = card.dataset.category;
+        const price = parseInt(card.dataset.price);
+        const col = card.dataset.color;
+        const sz = card.dataset.size;
+        const st = card.dataset.stock;
+
+        return (
+          (category === 'all' || cat === category) &&
+          price <= maxPrice &&
+          (color === 'all' || col.includes(color)) &&
+          (size === 'all' || sz.includes(size)) &&
+          (stock === 'all' || st === stock)
+        );
+      });
+
+      if (sort === 'price') list.sort((a, b) => parseInt(a.dataset.price) - parseInt(b.dataset.price));
+      if (sort === 'pop') list.sort((a, b) => parseInt(b.dataset.pop) - parseInt(a.dataset.pop));
+
+      cards.forEach(c => {
+        c.classList.remove('show');
+        c.style.display = 'none';
+      });
+      list.forEach(c => {
+        c.style.display = 'flex';
+        setTimeout(() => c.classList.add('show'), 50);
+      });
+    }
+
+    [filterCategory, priceRange, filterColor, filterSize, sortBy, stockFilter].forEach(el =>
+      el.addEventListener('input', update)
+    );
+
+    /* Wishlist */
+    document.addEventListener('click', e => {
+      if (e.target.classList.contains('wish-btn')) {
+        const id = e.target.dataset.id;
+        const idx = wishlist.indexOf(id);
+        if (idx === -1) {
+          wishlist.push(id);
+          e.target.textContent = '♥';
+        } else {
+          wishlist.splice(idx, 1);
+          e.target.textContent = '♡';
+        }
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      }
+    });
+
+    /* Toast + reveal */
+    const observer = new IntersectionObserver(entries =>
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('show');
+      })
+    );
+    cards.forEach(c => observer.observe(c));
+
+    document.addEventListener('click', e => {
+      if (e.target.classList.contains('snipcart-add-item')) {
+        const toast = document.getElementById('toast') || (() => {
+          const t = document.createElement('div');
+          t.id = 'toast';
+          t.textContent = 'Ajouté au panier ✔';
+          document.body.appendChild(t);
+          return t;
+        })();
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      }
+    });
+
+    /* Service worker */
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+
+    update();
   </script>
 </body>
 </html>
