@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Nuklal – nous méritons le meilleur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Boutique premium de vêtements et accessoires – livraison Suisse & monde. Collections uniques, matériaux de qualité, paiement sécurisé.">
+  <meta name="description" content="Boutique premium de vêtements et accessoires – livraison Suisse & monde. Collections uniques, paiement sécurisé.">
   <meta name="keywords" content="mode premium, vêtements, accessoires, Suisse, livraison express">
   <link rel="canonical" href="https://nuklal.com">
   <meta property="og:title" content="Nuklal – nous méritons le meilleur">
@@ -21,24 +21,13 @@
       --black:#111;
       --gold:#d4af37;
       --gray:#222;
-      --light:#f5f5f5;
       --radius:10px;
     }
     body{
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-      background:var(--black);
-      color:#fff;
-      line-height:1.6;
-      transition:background .3s,color .3s;
+      background:var(--black);color:#fff;line-height:1.6;transition:background .3s,color .3s;
     }
-    nav{
-      background:var(--gold);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:.8rem 1.2rem;
-      position:sticky;top:0;z-index:999;
-    }
+    nav{background:var(--gold);display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.2rem;position:sticky;top:0;z-index:999}
     nav a{color:var(--black);font-weight:600;text-decoration:none;margin:0 .6rem}
     .brand{font-size:1.5rem;font-weight:800}
     .hamburger{display:none;font-size:1.6rem;cursor:pointer}
@@ -48,56 +37,29 @@
       .nav-links a{padding:.8rem;border-top:1px solid #000}
       .hamburger{display:block}
     }
-    /* PROMO BAR */
     #promoBar{position:fixed;top:0;left:0;right:0;background:#d4af37;color:#111;padding:.5rem 1rem;text-align:center;font-weight:600;z-index:1000}
     #promoBar button{margin-left:.5rem;background:#111;color:#d4af37;border:none;padding:.2rem .5rem;border-radius:4px;cursor:pointer}
-    /* HERO PARALLAX */
-    .hero-parallax{
-      height:60vh;
-      background:url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat fixed;
-      display:flex;align-items:center;justify-content:center;
-      color:#fff;text-align:center;font-size:2rem;font-weight:700;
-      text-shadow:0 0 10px rgba(0,0,0,.6);
-    }
-    /* FILTRES */
+    .hero-parallax{height:60vh;background:url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat fixed;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;font-size:2rem;font-weight:700;text-shadow:0 0 10px rgba(0,0,0,.6)}
     .filters{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:2rem;background:#1a1a1a;padding:1rem;border-radius:var(--radius)}
     .filters label{font-size:.9rem;display:flex;flex-direction:column;gap:.2rem}
     .filters select,.filters input{padding:.4rem .6rem;border-radius:var(--radius);border:none;font-size:.9rem}
-    /* GRILLE PRODUITS */
     .products{display:grid;gap:2rem;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-    .card{
-      background:var(--gray);border-radius:var(--radius);padding:1rem;
-      display:flex;flex-direction:column;align-items:center;position:relative;
-      opacity:0;transform:translateY(20px);transition:transform .3s,opacity .6s;
-    }
+    .card{background:var(--gray);border-radius:var(--radius);padding:1rem;display:flex;flex-direction:column;align-items:center;position:relative;opacity:0;transform:translateY(20px);transition:transform .3s,opacity .6s}
     .card.show{opacity:1;transform:translateY(0)}
     .card:hover{transform:translateY(-4px)}
     .card img{width:100%;border-radius:var(--radius);margin-bottom:.5rem}
     .quick-info{position:absolute;top:0;left:0;right:0;background:rgba(0,0,0,.75);color:#fff;padding:.5rem;font-size:.8rem;opacity:0;transition:opacity .3s}
     .card:hover .quick-info{opacity:1}
     .price{font-size:1.2rem;color:var(--gold);margin-bottom:.8rem}
-    button{
-      background:var(--gold);color:var(--black);border:none;
-      padding:.7rem 1.4rem;border-radius:var(--radius);cursor:pointer;
-      font-weight:600;transition:background .3s;
-    }
+    button{background:var(--gold);color:var(--black);border:none;padding:.7rem 1.4rem;border-radius:var(--radius);cursor:pointer;font-weight:600;transition:background .3s}
     button:hover{background:#fff;color:var(--black)}
-    /* FOOTER */
     footer{background:#000;color:#fff;padding:2rem 1rem;font-size:.9rem}
     .footer-inner{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));max-width:1200px;margin:auto}
     footer h3{color:var(--gold);margin-bottom:.5rem}
     footer a{color:#fff;text-decoration:none}footer a:hover{color:var(--gold)}
     .footer-bottom{text-align:center;margin-top:1.5rem;font-size:.8rem}
-    /* TOAST */
-    #toast{
-      position:fixed;bottom:20px;left:50%;
-      transform:translateX(-50%) translateY(100px);
-      background:var(--gold);color:#111;padding:.6rem 1.2rem;
-      border-radius:6px;font-size:.9rem;font-weight:600;
-      opacity:0;transition:transform .3s,opacity .3s;z-index:9999;
-    }
+    #toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--gold);color:#111;padding:.6rem 1.2rem;border-radius:6px;font-size:.9rem;font-weight:600;opacity:0;transition:transform .3s,opacity .3s;z-index:9999}
     #toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-    /* POP-UP */
     #exitPop{position:fixed;inset:0;background:rgba(0,0,0,.7);opacity:0;visibility:hidden;transition:.3s;display:flex;align-items:center;justify-content:center;z-index:9999}
     #exitPop>div{background:#111;color:#fff;padding:2rem;border-radius:var(--radius);max-width:400px;text-align:center}
   </style>
@@ -114,7 +76,7 @@
       <a href="#products">Produits</a>
       <a href="#about">À propos</a>
       <a href="#contact">Contact</a>
-      <a href="cgv.html">CGV</a>
+      <a href="cgv.html" target="_blank">CGV</a>
     </div>
     <button id="themeToggle" title="Mode sombre/clair" style="background:none;border:none;color:var(--black);font-size:1.4rem;cursor:pointer">🌙</button>
     <span class="hamburger" onclick="toggleMenu()">☰</span>
@@ -235,6 +197,30 @@
     </div>
   </section>
 
+  <!-- Formulaire de contact -->
+  <section id="contact" style="padding:2rem 1rem;max-width:600px;margin:auto">
+    <h2>Contact</h2>
+    <form action="https://formspree.io/f/YOUR_ID" method="POST" style="display:grid;gap:1rem">
+      <label>Nom
+        <input type="text" name="nom" required style="width:100%;padding:.5rem;border:none;border-radius:var(--radius)">
+      </label>
+      <label>Email
+        <input type="email" name="email" required style="width:100%;padding:.5rem;border:none;border-radius:var(--radius)">
+      </label>
+      <label>Message
+        <textarea name="message" rows="5" required style="width:100%;padding:.5rem;border:none;border-radius:var(--radius);resize:vertical"></textarea>
+      </label>
+      <button type="submit" style="background:var(--gold);color:var(--black);border:none;padding:.7rem 1.4rem;border-radius:var(--radius);cursor:pointer;font-weight:600">Envoyer</button>
+    </form>
+  </section>
+
+  <!-- À propos -->
+  <section id="about">
+    <h2>À propos</h2>
+    <p>Nuklal, c’est la conviction que nous méritons tous le meilleur : des pièces uniques, des matériaux de qualité, une livraison rapide.<br>
+    Notre boutique en ligne vous propose une sélection pointue de vêtements et accessoires, livrés en Suisse et dans le monde entier.</p>
+  </section>
+
   <!-- Badges confiance -->
   <section style="padding:2rem 1rem;display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;font-size:.9rem;text-align:center">
     <div style="display:flex;align-items:center;gap:.5rem;color:var(--gold)">
@@ -251,23 +237,11 @@
     </div>
   </section>
 
-  <!-- À propos & contact -->
-  <section id="about">
-    <h2>À propos</h2>
-    <p>Nuklal, c’est la conviction que nous méritons tous le meilleur : des pièces uniques, des matériaux de qualité, une livraison rapide.<br>
-    Notre boutique en ligne vous propose une sélection pointue de vêtements et accessoires, livrés en Suisse et dans le monde entier.</p>
-  </section>
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Pour toute question, commande spéciale ou retour :</p>
-    <p><strong>Email&nbsp;:</strong> <a href="mailto:contact@nuklal.com" style="color:var(--gold)">contact@nuklal.com</a></p>
-  </section>
-
   <!-- Footer -->
   <footer>
     <div class="footer-inner">
       <div><h3>Nuklal</h3><p>nous méritons le meilleur</p></div>
-      <div><h3>Liens utiles</h3><ul><li><a href="#home">Accueil</a></li><li><a href="#products">Produits</a></li><li><a href="cgv.html">CGV</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h3>Liens utiles</h3><ul><li><a href="#home">Accueil</a></li><li><a href="#products">Produits</a></li><li><a href="cgv.html" target="_blank">CGV</a></li><li><a href="#contact">Contact</a></li></ul></div>
       <div><h3>Mentions légales</h3><ul><li><strong>Éditeur :</strong> Yacine B.</li><li><strong>Email :</strong> <a href="mailto:contact@nuklal.com">contact@nuklal.com</a></li><li><strong>Hébergeur :</strong> GitHub, Inc. – USA</li></ul></div>
       <div><h3>Suivez-nous</h3>
         <div style="display:flex;gap:.8rem"><a href="https://instagram.com/nuklal" target="_blank">📸</a><a href="https://tiktok.com/@nuklal" target="_blank">🎵</a><a href="https://pinterest.com/nuklal" target="_blank">📌</a></div>
