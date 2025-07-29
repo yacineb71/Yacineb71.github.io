@@ -7,35 +7,128 @@
   <meta name="description" content="Mode & accessoires premium – livraison Suisse & monde.">
   <link rel="icon" href="https://i.imgur.com/X8jQh7b.png">
   <style>
-    :root { --black:#111; --gold:#d4af37; }
+    :root {
+      --black:#111;
+      --gold:#d4af37;
+      --gray:#222;
+      --light:#f5f5f5;
+      --radius:10px;
+    }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Helvetica,Arial,sans-serif;background:var(--black);color:#fff;line-height:1.4}
-    header{background:var(--gold);padding:2rem;text-align:center}
-    header h1{margin:0;font-size:2.8rem;color:var(--black)}
-    header p{font-size:1.2rem;margin-top:.3rem}
-    .products{display:grid;gap:2rem;padding:2rem;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-    .card{background:#222;border-radius:8px;padding:1rem;display:flex;flex-direction:column;align-items:center}
-    .card img{width:100%;border-radius:6px;margin-bottom:.5rem}
-    .card h2{font-size:1.2rem;margin:.5rem 0}
-    .card .price{font-size:1.3rem;color:var(--gold);margin-bottom:.8rem}
-    button{background:var(--gold);color:var(--black);border:none;padding:.7rem 1.4rem;border-radius:4px;cursor:pointer;font-weight:600}
-    nav{background:var(--gold);display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.2rem;position:sticky;top:0;z-index:999}
-    nav a{color:var(--black);text-decoration:none;font-weight:600;margin:0 .6rem}
-    .brand{font-size:1.4rem}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:var(--black);
+      color:#fff;
+      line-height:1.6;
+    }
+    /* === NAVBAR === */
+    nav{
+      background:var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:.8rem 1.2rem;
+      position:sticky;
+      top:0;
+      z-index:999;
+    }
+    nav a{color:var(--black);font-weight:600;text-decoration:none;margin:0 .6rem}
+    .brand{font-size:1.5rem;font-weight:800}
     .hamburger{display:none;font-size:1.6rem;cursor:pointer}
     .nav-links{display:flex;align-items:center}
     @media(max-width:600px){
       .nav-links{display:none;flex-direction:column;background:var(--gold);position:absolute;top:60px;right:0;width:100%}
-      .nav-links a{padding:.5rem 1rem;border-top:1px solid #000}
+      .nav-links a{padding:.8rem;border-top:1px solid #000}
       .hamburger{display:block}
     }
-    footer{background:#111;color:#fff;padding:2rem 1rem;font-size:.9rem}
+    /* === HEADER === */
+    header{
+      background:linear-gradient(135deg,var(--gold) 0%,#f7e98e 100%);
+      padding:4rem 1rem;
+      text-align:center;
+    }
+    header h1{font-size:3rem;color:var(--black);letter-spacing:.5px}
+    header p{font-size:1.3rem;color:var(--black);opacity:.9;margin-top:.5rem}
+    /* === SECTIONS === */
+    section{padding:2rem 1rem;max-width:1200px;margin:auto}
+    h2{color:var(--gold);margin-bottom:1rem}
+    /* === FILTRES === */
+    .filters{
+      display:flex;
+      flex-wrap:wrap;
+      gap:1rem;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:2rem;
+      background:#1a1a1a;
+      padding:1rem;
+      border-radius:var(--radius);
+    }
+    .filters label{
+      font-size:.9rem;
+      display:flex;
+      flex-direction:column;
+      gap:.2rem;
+    }
+    .filters select,.filters input{
+      padding:.4rem .6rem;
+      border-radius:var(--radius);
+      border:none;
+      font-size:.9rem;
+    }
+    /* === GRILLE PRODUITS === */
+    .products{
+      display:grid;
+      gap:2rem;
+      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    }
+    .card{
+      background:var(--gray);
+      border-radius:var(--radius);
+      padding:1rem;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      transition:transform .3s;
+    }
+    .card:hover{transform:translateY(-4px)}
+    .card img{
+      width:100%;
+      border-radius:var(--radius);
+      margin-bottom:.5rem;
+    }
+    .card h2{font-size:1.1rem;margin:.5rem 0}
+    .price{font-size:1.2rem;color:var(--gold);margin-bottom:.8rem}
+    button{
+      background:var(--gold);
+      color:var(--black);
+      border:none;
+      padding:.7rem 1.4rem;
+      border-radius:var(--radius);
+      cursor:pointer;
+      font-weight:600;
+      transition:background .3s;
+    }
+    button:hover{background:#fff;color:var(--black)}
+    /* === FOOTER === */
+    footer{
+      background:#000;
+      color:#fff;
+      padding:2rem 1rem;
+      font-size:.9rem;
+    }
+    .footer-inner{
+      display:grid;
+      gap:1.5rem;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      max-width:1200px;
+      margin:auto;
+    }
     footer h3{color:var(--gold);margin-bottom:.5rem}
-    .footer-inner{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));max-width:1200px;margin:auto}
-    .footer-bottom{text-align:center;margin-top:1.5rem;font-size:.8rem}
     footer ul{list-style:none;padding:0;margin:0}
     footer a{color:#fff;text-decoration:none}
     footer a:hover{color:var(--gold)}
+    .footer-bottom{text-align:center;margin-top:1.5rem;font-size:.8rem}
   </style>
 </head>
 <body>
@@ -53,157 +146,52 @@
     <span class="hamburger" onclick="toggleMenu()">☰</span>
   </nav>
 
+  <!-- Hero -->
   <header id="home">
     <h1>Nuklal</h1>
     <p>nous méritons le meilleur</p>
   </header>
-</header>
-</header>
 
-<!-- =========================
-     FILTRES AVANT GRILLE PRODUITS
-============================ -->
-<section style="padding:1rem 2rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
-  <label>Filtrer :
-    <select id="filterCategory">
-      <option value="all">Tous</option>
-      <option value="tshirt">T-shirt</option>
-      <option value="hoodie">Hoodie</option>
-      <option value="sneakers">Sneakers</option>
-      <option value="accessoire">Accessoire</option>
-    </select>
-  </label>
+  <!-- Filtres -->
+  <section class="filters">
+    <label>Catégorie
+      <select id="filterCategory">
+        <option value="all">Tous</option>
+        <option value="tshirt">T-shirt</option>
+        <option value="hoodie">Hoodie</option>
+        <option value="sneakers">Sneakers</option>
+        <option value="accessoire">Accessoire</option>
+      </select>
+    </label>
 
-  <label>Prix max :
-    <input type="range" id="priceRange" min="0" max="100" value="100">
-    <span id="priceValue">100 CHF</span>
-  </label>
-</section>
+    <label>Prix max
+      <input type="range" id="priceRange" min="0" max="100" value="100">
+      <span id="priceValue">100 CHF</span>
+    </label>
 
-<!-- =========================
-     GRILLE PRODUITS
-============================ -->
-<section id="products" class="products">
-  <div class="product-grid" id="productGrid">
-    <!-- T-shirt -->
-    <div class="card" data-category="tshirt" data-price="39">
-      <img src="https://i.imgur.com/X8jQh7b.png" alt="T-shirt Oversize Noir">
-      <h2>T-shirt Oversize Noir</h2>
-      <p class="price">39 CHF</p>
-      <button class="snipcart-add-item"
-              data-item-id="tshirt"
-              data-item-price="39"
-              data-item-name="T-shirt Oversize Noir"
-              data-item-image="https://i.imgur.com/X8jQh7b.png"
-              data-item-url="https://nuklal.com">Acheter</button>
-    </div>
+    <label>Couleur
+      <select id="filterColor">
+        <option value="all">Toutes</option>
+        <option value="noir">Noir</option>
+        <option value="blanc">Blanc</option>
+        <option value="or">Or</option>
+      </select>
+    </label>
 
-    <!-- Sneakers -->
-    <div class="card" data-category="sneakers" data-price="89">
-      <img src="https://i.imgur.com/7ZtVfXk.png" alt="Sneakers">
-      <h2>Sneakers Minimalistes</h2>
-      <p class="price">89 CHF</p>
-      <button class="snipcart-add-item"
-              data-item-id="sneakers"
-              data-item-price="89"
-              data-item-name="Sneakers Minimalistes"
-              data-item-image="https://i.imgur.com/7ZtVfXk.png"
-              data-item-url="https://nuklal.com">Acheter</button>
-    </div>
+    <label>Taille
+      <select id="filterSize">
+        <option value="all">Toutes</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select>
+    </label>
+  </section>
 
-    <!-- Casquette -->
-    <div class="card" data-category="accessoire" data-price="25">
-      <img src="https://i.imgur.com/L3cJh4R.png" alt="Casquette">
-      <h2>Casquette Noir/Or</h2>
-      <p class="price">25 CHF</p>
-      <button class="snipcart-add-item"
-              data-item-id="cap"
-              data-item-price="25"
-              data-item-name="Casquette Noir/Or"
-              data-item-image="https://i.imgur.com/L3cJh4R.png"
-              data-item-url="https://nuklal.com">Acheter</button>
-    </div>
-
-    <!-- Sac -->
-    <div class="card" data-category="accessoire" data-price="59">
-      <img src="https://i.imgur.com/M9kL5zU.png" alt="Sac">
-      <h2>Sac Bandoulière</h2>
-      <p class="price">59 CHF</p>
-      <button class="snipcart-add-item"
-              data-item-id="bag"
-              data-item-price="59"
-              data-item-name="Sac Bandoulière"
-              data-item-image="https://i.imgur.com/M9kL5zU.png"
-              data-item-url="https://nuklal.com">Acheter</button>
-    </div>
-
-    <!-- Hoodie -->
-    <div class="card" data-category="hoodie" data-price="69">
-      <img src="https://i.imgur.com/F5tQ9sA.png" alt="Hoodie">
-      <h2>Hoodie Oversize</h2>
-      <p class="price">69 CHF</p>
-      <button class="snipcart-add-item"
-              data-item-id="hoodie"
-              data-item-price="69"
-              data-item-name="Hoodie Oversize"
-              data-item-image="https://i.imgur.com/F5tQ9sA.png"
-              data-item-url="https://nuklal.com">Acheter</button>
-    </div>
-  </div>
-</section>
-
-<!-- =========================
-     SCRIPT FILTRAGE
-============================ -->
-<script>
-  const cards = [...document.querySelectorAll('.card')];
-  const filterCategory = document.getElementById('filterCategory');
-  const priceRange = document.getElementById('priceRange');
-  const priceValue = document.getElementById('priceValue');
-
-  function filterProducts() {
-    const category = filterCategory.value;
-    const maxPrice = parseInt(priceRange.value);
-    priceValue.textContent = maxPrice + ' CHF';
-
-    cards.forEach(card => {
-      const cat = card.dataset.category;
-      const price = parseInt(card.dataset.price);
-      const matchCat = category === 'all' || cat === category;
-      const matchPrice = price <= maxPrice;
-      card.style.display = matchCat && matchPrice ? 'flex' : 'none';
-    });
-  }
-
-  filterCategory.addEventListener('change', filterProducts);
-  priceRange.addEventListener('input', filterProducts);
-</script>
-<!-- Filtres produits -->
-<section style="padding:1rem 2rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
-  <label>Filtrer :
-    <select id="filterCategory">
-      <option value="all">Tous</option>
-      <option value="tshirt">T-shirt</option>
-      <option value="hoodie">Hoodie</option>
-      <option value="sneakers">Sneakers</option>
-      <option value="accessoire">Accessoire</option>
-    </select>
-  </label>
-
-  <label>Prix max :
-    <input type="range" id="priceRange" min="0" max="100" value="100">
-    <span id="priceValue">100 CHF</span>
-  </label>
-</section>
   <!-- Produits -->
-<section id="products" class="products">
-  <div class="product-grid" id="productGrid">
-    <!-- Les .card ici -->
-  </div>
-</section>    <!-- Widget AliExpress (à adapter) -->
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
-    <div class="elfsight-app-32881e9e-1922-4908-bb21-b028abd50713" data-elfsight-app-lazy></div>
-    <div class="card">
+  <section id="products" class="products">
+    <div class="card" data-category="tshirt" data-price="39" data-color="noir" data-size="M,L,XL">
       <img src="https://i.imgur.com/X8jQh7b.png" alt="T-shirt Oversize">
       <h2>T-shirt Oversize Noir</h2>
       <p class="price">39 CHF</p>
@@ -215,7 +203,7 @@
               data-item-url="https://nuklal.com">Acheter</button>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="sneakers" data-price="89" data-color="blanc" data-size="40,41,42,43">
       <img src="https://i.imgur.com/7ZtVfXk.png" alt="Sneakers">
       <h2>Sneakers Minimalistes</h2>
       <p class="price">89 CHF</p>
@@ -227,7 +215,7 @@
               data-item-url="https://nuklal.com">Acheter</button>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="accessoire" data-price="25" data-color="noir,or" data-size="unique">
       <img src="https://i.imgur.com/L3cJh4R.png" alt="Casquette">
       <h2>Casquette Noir/Or</h2>
       <p class="price">25 CHF</p>
@@ -239,7 +227,7 @@
               data-item-url="https://nuklal.com">Acheter</button>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="accessoire" data-price="59" data-color="noir" data-size="unique">
       <img src="https://i.imgur.com/M9kL5zU.png" alt="Sac">
       <h2>Sac Bandoulière</h2>
       <p class="price">59 CHF</p>
@@ -251,7 +239,7 @@
               data-item-url="https://nuklal.com">Acheter</button>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="hoodie" data-price="69" data-color="noir" data-size="M,L,XL">
       <img src="https://i.imgur.com/F5tQ9sA.png" alt="Hoodie">
       <h2>Hoodie Oversize</h2>
       <p class="price">69 CHF</p>
@@ -265,7 +253,7 @@
   </section>
 
   <!-- À propos -->
-  <section id="about" style="padding:2rem;max-width:800px;margin:auto">
+  <section id="about">
     <h2>À propos</h2>
     <p>
       Nuklal, c’est la conviction que nous méritons tous le meilleur : des pièces uniques, des matériaux de qualité, une livraison rapide.<br>
@@ -274,7 +262,7 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" style="padding:2rem;max-width:600px;margin:auto">
+  <section id="contact">
     <h2>Contact</h2>
     <p>Pour toute question, commande spéciale ou retour :</p>
     <p><strong>Email&nbsp;:</strong> <a href="mailto:contact@nuklal.com" style="color:var(--gold)">contact@nuklal.com</a></p>
@@ -323,35 +311,47 @@
        data-currency="chf"
        data-locale="fr"></div>
 
-  <!-- JS menu mobile -->
+  <!-- JS menu mobile + filtres -->
   <script>
     function toggleMenu() {
       const nav = document.getElementById('navLinks');
       nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
     }
-  </script>
-  <script>
-  const cards = [...document.querySelectorAll('.card')];
-  const filterCategory = document.getElementById('filterCategory');
-  const priceRange = document.getElementById('priceRange');
-  const priceValue = document.getElementById('priceValue');
 
-  function filterProducts() {
-    const category = filterCategory.value;
-    const maxPrice = parseInt(priceRange.value);
-    priceValue.textContent = maxPrice + " CHF";
+    /* --- Filtres --- */
+    const cards = [...document.querySelectorAll('.card')];
+    const filterCategory = document.getElementById('filterCategory');
+    const priceRange = document.getElementById('priceRange');
+    const priceValue = document.getElementById('priceValue');
+    const filterColor = document.getElementById('filterColor');
+    const filterSize = document.getElementById('filterSize');
 
-    cards.forEach(card => {
-      const cat = card.dataset.category;
-      const price = parseInt(card.dataset.price);
-      const matchCat = category === 'all' || cat === category;
-      const matchPrice = price <= maxPrice;
-      card.style.display = matchCat && matchPrice ? 'flex' : 'none';
-    });
-  }
+    function filterProducts() {
+      const category = filterCategory.value;
+      const maxPrice = parseInt(priceRange.value);
+      const color = filterColor.value;
+      const size = filterSize.value;
 
-  filterCategory.addEventListener('change', filterProducts);
-  priceRange.addEventListener('input', filterProducts);
+      priceValue.textContent = maxPrice + ' CHF';
+
+      cards.forEach(card => {
+        const cat = card.dataset.category;
+        const price = parseInt(card.dataset.price);
+        const col = card.dataset.color;
+        const sz = card.dataset.size;
+
+        const matchCat = category === 'all' || cat === category;
+        const matchPrice = price <= maxPrice;
+        const matchColor = color === 'all' || col.includes(color);
+        const matchSize = size === 'all' || sz.includes(size);
+
+        card.style.display = (matchCat && matchPrice && matchColor && matchSize) ? 'flex' : 'none';
+      });
+    }
+
+    [filterCategory, priceRange, filterColor, filterSize].forEach(el =>
+      el.addEventListener('input', filterProducts)
+    );
   </script>
 </body>
 </html>
