@@ -131,6 +131,34 @@
     .footer-bottom{text-align:center;margin-top:1.5rem;font-size:.8rem}
   </style>
 </head>
+  <style>
+  #toast{
+    position:fixed;
+    bottom:20px;left:50%;
+    transform:translateX(-50%) translateY(100px);
+    background:#d4af37;
+    color:#111;
+    padding:.6rem 1.2rem;
+    border-radius:6px;
+    font-size:.9rem;
+    font-weight:600;
+    opacity:0;
+    transition:transform .3s, opacity .3s;
+    z-index:9999;
+  }
+  #toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+<script>
+  document.addEventListener('click', e=>{
+    if(e.target.classList.contains('snipcart-add-item')){
+      const toast = document.getElementById('toast') || (()=>{
+        const t=document.createElement('div');t.id='toast';t.textContent='Ajouté au panier ✔';document.body.appendChild(t);return t;
+      })();
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'),2500);
+    }
+  });
+</script>
 <body>
 
   <!-- Navbar -->
@@ -271,7 +299,21 @@
               data-item-url="https://nuklal.com">Acheter</button>
     </div>
   </section>
-
+<!-- Badges confiance -->
+<section style="padding:2rem 1rem;display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;font-size:.9rem;text-align:center">
+  <div style="display:flex;align-items:center;gap:.5rem;color:var(--gold)">
+    <svg width="20" height="20" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 15l-4-4 1.41-1.41L10 12.17l6.59-6.59L18 7l-8 8z"/></svg>
+    Livraison gratuite dès 100 CHF
+  </div>
+  <div style="display:flex;align-items:center;gap:.5rem;color:var(--gold)">
+    <svg width="20" height="20" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 15l-4-4 1.41-1.41L10 12.17l6.59-6.59L18 7l-8 8z"/></svg>
+    Paiement sécurisé SSL
+  </div>
+  <div style="display:flex;align-items:center;gap:.5rem;color:var(--gold)">
+    <svg width="20" height="20" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 15l-4-4 1.41-1.41L10 12.17l6.59-6.59L18 7l-8 8z"/></svg>
+    Retours gratuits 30 jours
+  </div>
+</section>
   <!-- À propos -->
   <section id="about">
     <h2>À propos</h2>
