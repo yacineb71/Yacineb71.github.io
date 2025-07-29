@@ -57,10 +57,31 @@
     <h1>Nuklal</h1>
     <p>nous méritons le meilleur</p>
   </header>
+</header>
 
+<!-- Filtres produits -->
+<section style="padding:1rem 2rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+  <label>Filtrer :
+    <select id="filterCategory">
+      <option value="all">Tous</option>
+      <option value="tshirt">T-shirt</option>
+      <option value="hoodie">Hoodie</option>
+      <option value="sneakers">Sneakers</option>
+      <option value="accessoire">Accessoire</option>
+    </select>
+  </label>
+
+  <label>Prix max :
+    <input type="range" id="priceRange" min="0" max="100" value="100">
+    <span id="priceValue">100 CHF</span>
+  </label>
+</section>
   <!-- Produits -->
-  <section id="products" class="products">
-    <!-- Widget AliExpress (à adapter) -->
+<section id="products" class="products">
+  <div class="product-grid" id="productGrid">
+    <!-- Les .card ici -->
+  </div>
+</section>    <!-- Widget AliExpress (à adapter) -->
     <script src="https://static.elfsight.com/platform/platform.js" async></script>
     <div class="elfsight-app-32881e9e-1922-4908-bb21-b028abd50713" data-elfsight-app-lazy></div>
     <div class="card">
