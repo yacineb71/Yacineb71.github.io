@@ -5,154 +5,93 @@
   <title>Nuklal – nous méritons le meilleur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Mode & accessoires premium – livraison Suisse & monde.">
-  <link rel="icon" href="favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="icon" href="favicon.png">
   <style>
     :root {
       --black:#111;
       --gold:#d4af37;
       --gray:#222;
+      --light:#f5f5f5;
       --radius:10px;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
     body{
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
       background:var(--black);
       color:#fff;
       line-height:1.6;
+      transition:background .3s,color .3s;
     }
+    /* NAVBAR */
     nav{
       background:var(--gold);
       display:flex;
       align-items:center;
       justify-content:space-between;
       padding:.8rem 1.2rem;
-      position:sticky;
-      top:0;
-      z-index:999;
+      position:sticky;top:0;z-index:999;
     }
     nav a{color:var(--black);font-weight:600;text-decoration:none;margin:0 .6rem}
     .brand{font-size:1.5rem;font-weight:800}
     .hamburger{display:none;font-size:1.6rem;cursor:pointer}
-    .nav-links{display:flex;align-items:center}
+    .nav-links{display:flex;align-items:center;gap:.5rem}
     @media(max-width:600px){
       .nav-links{display:none;flex-direction:column;background:var(--gold);position:absolute;top:60px;right:0;width:100%}
       .nav-links a{padding:.8rem;border-top:1px solid #000}
       .hamburger{display:block}
     }
-    header{
-      background:linear-gradient(135deg,var(--gold) 0%,#f7e98e 100%);
-      padding:4rem 1rem;
-      text-align:center;
+    /* HERO PARALLAX */
+    .hero-parallax{
+      height:60vh;
+      background:url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      background-attachment:fixed;
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;text-align:center;font-size:2rem;font-weight:700;
+      text-shadow:0 0 10px rgba(0,0,0,.6);
     }
-    header h1{font-size:3rem;color:var(--black);letter-spacing:.5px}
-    header p{font-size:1.3rem;color:var(--black);opacity:.9;margin-top:.5rem}
-    section{padding:2rem 1rem;max-width:1200px;margin:auto}
-    h2{color:var(--gold);margin-bottom:1rem}
-    .filters{
-      display:flex;
-      flex-wrap:wrap;
-      gap:1rem;
-      align-items:center;
-      justify-content:center;
-      margin-bottom:2rem;
-      background:#1a1a1a;
-      padding:1rem;
-      border-radius:var(--radius);
-    }
+    /* FILTRES */
+    .filters{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:2rem;background:#1a1a1a;padding:1rem;border-radius:var(--radius)}
     .filters label{font-size:.9rem;display:flex;flex-direction:column;gap:.2rem}
     .filters select,.filters input{padding:.4rem .6rem;border-radius:var(--radius);border:none;font-size:.9rem}
+    /* GRILLE PRODUITS */
     .products{
-      display:grid;
-      gap:2rem;
+      display:grid;gap:2rem;
       grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
     }
     .card{
-      background:var(--gray);
-      border-radius:var(--radius);
-      padding:1rem;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      transition:transform .3s;
+      background:var(--gray);border-radius:var(--radius);padding:1rem;
+      display:flex;flex-direction:column;align-items:center;
+      position:relative;opacity:0;transform:translateY(20px);
+      transition:transform .3s,opacity .6s;
     }
+    .card.show{opacity:1;transform:translateY(0)}
     .card:hover{transform:translateY(-4px)}
     .card img{width:100%;border-radius:var(--radius);margin-bottom:.5rem}
-    .card h2{font-size:1.1rem;margin:.5rem 0}
+    .quick-info{position:absolute;top:0;left:0;right:0;background:rgba(0,0,0,.75);color:#fff;padding:.5rem;font-size:.8rem;opacity:0;transition:opacity .3s}
+    .card:hover .quick-info{opacity:1}
     .price{font-size:1.2rem;color:var(--gold);margin-bottom:.8rem}
     button{
-      background:var(--gold);
-      color:var(--black);
-      border:none;
-      padding:.7rem 1.4rem;
-      border-radius:var(--radius);
-      cursor:pointer;
-      font-weight:600;
-      transition:background .3s;
+      background:var(--gold);color:var(--black);border:none;
+      padding:.7rem 1.4rem;border-radius:var(--radius);cursor:pointer;
+      font-weight:600;transition:background .3s;
     }
     button:hover{background:#fff;color:var(--black)}
-    footer{
-      background:#000;
-      color:#fff;
-      padding:2rem 1rem;
-      font-size:.9rem;
-    }
-    .footer-inner{
-      display:grid;
-      gap:1.5rem;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      max-width:1200px;
-      margin:auto;
-    }
+    /* FOOTER */
+    footer{background:#000;color:#fff;padding:2rem 1rem;font-size:.9rem}
+    .footer-inner{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));max-width:1200px;margin:auto}
     footer h3{color:var(--gold);margin-bottom:.5rem}
-    footer ul{list-style:none;padding:0;margin:0}
     footer a{color:#fff;text-decoration:none}
     footer a:hover{color:var(--gold)}
-    .footer-bottom{text-align:center;margin-top:1.5rem;font-size:.8rem}
+    /* TOAST */
     #toast{
-      position:fixed;
-      bottom:20px;left:50%;
+      position:fixed;bottom:20px;left:50%;
       transform:translateX(-50%) translateY(100px);
-      background:#d4af37;
-      color:#111;
-      padding:.6rem 1.2rem;
-      border-radius:6px;
-      font-size:.9rem;
-      font-weight:600;
-      opacity:0;
-      transition:transform .3s, opacity .3s;
-      z-index:9999;
+      background:var(--gold);color:#111;padding:.6rem 1.2rem;
+      border-radius:6px;font-size:.9rem;font-weight:600;
+      opacity:0;transition:transform .3s,opacity .3s;z-index:9999;
     }
     #toast.show{transform:translateX(-50%) translateY(0);opacity:1}
   </style>
 </head>
-  <script>
-  const toggle = document.getElementById('themeToggle');
-  const root = document.documentElement;
-  const saved = localStorage.getItem('theme');
-
-  if (saved === 'dark') {
-    root.style.setProperty('--black', '#fff');
-    root.style.setProperty('--gold', '#b8860b');
-    root.style.setProperty('--gray', '#f5f5f5');
-    root.style.setProperty('--light', '#222');
-    document.body.style.background = '#fff';
-    document.body.style.color = '#111';
-    toggle.textContent = '☀️';
-  }
-
-  toggle.addEventListener('click', () => {
-    const isDark = root.style.getPropertyValue('--black') === '#fff';
-    root.style.setProperty('--black', isDark ? '#111' : '#fff');
-    root.style.setProperty('--gold', isDark ? '#d4af37' : '#b8860b');
-    root.style.setProperty('--gray', isDark ? '#222' : '#f5f5f5');
-    root.style.setProperty('--light', isDark ? '#f5f5f5' : '#222');
-    document.body.style.background = isDark ? '#111' : '#fff';
-    document.body.style.color = isDark ? '#fff' : '#111';
-    toggle.textContent = isDark ? '🌙' : '☀️';
-    localStorage.setItem('theme', isDark ? 'light' : 'dark');
-  });
-  </script>
 <body>
   <!-- Navbar -->
   <nav>
@@ -164,35 +103,15 @@
       <a href="#contact">Contact</a>
       <a href="cgv.html">CGV</a>
     </div>
-    <!-- Toggle mode sombre/clair -->
-<button id="themeToggle" style="background:none;border:none;color:var(--black);font-size:1.4rem;cursor:pointer" title="Mode sombre/clair">🌙</button>
+    <button id="themeToggle" title="Mode sombre/clair" style="background:none;border:none;color:var(--black);font-size:1.4rem;cursor:pointer">🌙</button>
     <span class="hamburger" onclick="toggleMenu()">☰</span>
   </nav>
 
-  <!-- Hero Image -->
-  .hero-parallax {
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-}
-  <section class="hero-parallax" style="height:60vh; background:url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;">
-  <section style="
-    width:100%;
-    height:60vh;
-    background:url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#fff;
-    text-align:center;
-    font-size:2rem;
-    font-weight:700;
-    letter-spacing:1px;
-    text-shadow:0 0 10px rgba(0,0,0,.6);
-  ">
+  <!-- Hero Parallax -->
+  <section class="hero-parallax">
     <div>
-      <h2 style="margin:0;">Collection Automne 2025</h2>
-      <p style="margin:.5rem 0 0; font-size:1.2rem;">Nouveautés premium, livraison express.</p>
+      <h2>Collection Automne 2025</h2>
+      <p>Nouveautés premium, livraison express.</p>
     </div>
   </section>
 
@@ -218,28 +137,25 @@
       <span id="priceValue">100 CHF</span>
     </label>
     <label>Couleur
-      <select id="filterColor">
-        <option value="all">Toutes</option>
-        <option value="noir">Noir</option>
-        <option value="blanc">Blanc</option>
-        <option value="or">Or</option>
-      </select>
+      <select id="filterColor"><option value="all">Toutes</option><option value="noir">Noir</option><option value="blanc">Blanc</option><option value="or">Or</option></select>
     </label>
     <label>Taille
-      <select id="filterSize">
-        <option value="all">Toutes</option>
-        <option value="S">S</option>
-        <option value="M">M</option>
-        <option value="L">L</option>
-        <option value="XL">XL</option>
-      </select>
+      <select id="filterSize"><option value="all">Toutes</option><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option></select>
+    </label>
+    <label>Trier
+      <select id="sortBy"><option value="new">Nouveauté</option><option value="price">Prix ↓</option><option value="pop">Popularité</option></select>
+    </label>
+    <label>Stock
+      <select id="stockFilter"><option value="all">Tous</option><option value="in">En stock</option><option value="out">Épuisé</option></select>
     </label>
   </section>
 
   <!-- Produits -->
   <section id="products" class="products">
-    <div class="card" data-category="tshirt" data-price="39" data-color="noir" data-size="M,L,XL">
+    <!-- T-shirt -->
+    <div class="card" data-category="tshirt" data-price="39" data-color="noir" data-size="M,L,XL" data-pop="95" data-stock="in">
       <img src="https://i.imgur.com/X8jQh7b.png" alt="T-shirt Oversize">
+      <div class="quick-info">Tailles : M, L, XL</div>
       <h2>T-shirt Oversize Noir</h2>
       <p class="price">39 CHF</p>
       <button class="snipcart-add-item"
@@ -248,10 +164,13 @@
               data-item-name="T-shirt Oversize Noir"
               data-item-image="https://i.imgur.com/X8jQh7b.png"
               data-item-url="https://nuklal.com">Acheter</button>
+      <button class="wish-btn" data-id="tshirt" style="margin-top:.5rem;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:.3rem .6rem;border-radius:var(--radius);cursor:pointer">♡</button>
     </div>
 
-    <div class="card" data-category="sneakers" data-price="89" data-color="blanc" data-size="40,41,42,43">
+    <!-- Sneakers -->
+    <div class="card" data-category="sneakers" data-price="89" data-color="blanc" data-size="40,41,42,43" data-pop="88" data-stock="in">
       <img src="https://i.imgur.com/7ZtVfXk.png" alt="Sneakers">
+      <div class="quick-info">Tailles : 40-43</div>
       <h2>Sneakers Minimalistes</h2>
       <p class="price">89 CHF</p>
       <button class="snipcart-add-item"
@@ -260,10 +179,13 @@
               data-item-name="Sneakers Minimalistes"
               data-item-image="https://i.imgur.com/7ZtVfXk.png"
               data-item-url="https://nuklal.com">Acheter</button>
+      <button class="wish-btn" data-id="sneakers" style="margin-top:.5rem;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:.3rem .6rem;border-radius:var(--radius);cursor:pointer">♡</button>
     </div>
 
-    <div class="card" data-category="accessoire" data-price="25" data-color="noir,or" data-size="unique">
+    <!-- Casquette -->
+    <div class="card" data-category="accessoire" data-price="25" data-color="noir,or" data-size="unique" data-pop="92" data-stock="in">
       <img src="https://i.imgur.com/L3cJh4R.png" alt="Casquette">
+      <div class="quick-info">Taille unique</div>
       <h2>Casquette Noir/Or</h2>
       <p class="price">25 CHF</p>
       <button class="snipcart-add-item"
@@ -272,10 +194,13 @@
               data-item-name="Casquette Noir/Or"
               data-item-image="https://i.imgur.com/L3cJh4R.png"
               data-item-url="https://nuklal.com">Acheter</button>
+      <button class="wish-btn" data-id="cap" style="margin-top:.5rem;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:.3rem .6rem;border-radius:var(--radius);cursor:pointer">♡</button>
     </div>
 
-    <div class="card" data-category="accessoire" data-price="59" data-color="noir" data-size="unique">
+    <!-- Sac -->
+    <div class="card" data-category="accessoire" data-price="59" data-color="noir" data-size="unique" data-pop="70" data-stock="in">
       <img src="https://i.imgur.com/M9kL5zU.png" alt="Sac">
+      <div class="quick-info">Taille unique</div>
       <h2>Sac Bandoulière</h2>
       <p class="price">59 CHF</p>
       <button class="snipcart-add-item"
@@ -284,10 +209,13 @@
               data-item-name="Sac Bandoulière"
               data-item-image="https://i.imgur.com/M9kL5zU.png"
               data-item-url="https://nuklal.com">Acheter</button>
+      <button class="wish-btn" data-id="bag" style="margin-top:.5rem;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:.3rem .6rem;border-radius:var(--radius);cursor:pointer">♡</button>
     </div>
 
-    <div class="card" data-category="hoodie" data-price="69" data-color="noir" data-size="M,L,XL">
+    <!-- Hoodie -->
+    <div class="card" data-category="hoodie" data-price="69" data-color="noir" data-size="M,L,XL" data-pop="85" data-stock="in">
       <img src="https://i.imgur.com/F5tQ9sA.png" alt="Hoodie">
+      <div class="quick-info">Tailles : M, L, XL</div>
       <h2>Hoodie Oversize</h2>
       <p class="price">69 CHF</p>
       <button class="snipcart-add-item"
@@ -296,6 +224,7 @@
               data-item-name="Hoodie Oversize"
               data-item-image="https://i.imgur.com/F5tQ9sA.png"
               data-item-url="https://nuklal.com">Acheter</button>
+      <button class="wish-btn" data-id="hoodie" style="margin-top:.5rem;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:.3rem .6rem;border-radius:var(--radius);cursor:pointer">♡</button>
     </div>
   </section>
 
@@ -315,16 +244,12 @@
     </div>
   </section>
 
-  <!-- À propos -->
+  <!-- À propos & contact -->
   <section id="about">
     <h2>À propos</h2>
-    <p>
-      Nuklal, c’est la conviction que nous méritons tous le meilleur : des pièces uniques, des matériaux de qualité, une livraison rapide.<br>
-      Notre boutique en ligne vous propose une sélection pointue de vêtements et accessoires, livrés en Suisse et dans le monde entier.
-    </p>
+    <p>Nuklal, c’est la conviction que nous méritons tous le meilleur : des pièces uniques, des matériaux de qualité, une livraison rapide.<br>
+    Notre boutique en ligne vous propose une sélection pointue de vêtements et accessoires, livrés en Suisse et dans le monde entier.</p>
   </section>
-
-  <!-- Contact -->
   <section id="contact">
     <h2>Contact</h2>
     <p>Pour toute question, commande spéciale ou retour :</p>
@@ -334,94 +259,113 @@
   <!-- Footer -->
   <footer>
     <div class="footer-inner">
-      <div>
-        <h3>Nuklal</h3>
-        <p>nous méritons le meilleur</p>
-      </div>
-      <div>
-        <h3>Liens utiles</h3>
-        <ul>
-          <li><a href="#home">Accueil</a></li>
-          <li><a href="#products">Produits</a></li>
-          <li><a href="cgv.html">CGV</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Mentions légales</h3>
-        <ul>
-          <li><strong>Éditeur :</strong> Yacine B. (entrepreneur individuel)</li>
-          <li><strong>Adresse :</strong> [ta rue, CP, ville, Suisse]</li>
-          <li><strong>Email :</strong> <a href="mailto:contact@nuklal.com">contact@nuklal.com</a></li>
-          <li><strong>TVA :</strong> [numéro ou « TVA non applicable »]</li>
-          <li><strong>Hébergeur :</strong> GitHub, Inc. – USA</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Suivez-nous</h3>
-        <div style="display:flex;gap:.8rem;margin-top:.5rem">
-          <a href="https://instagram.com/nuklal" target="_blank" aria-label="Instagram">
-            <svg width="24" height="24" fill="#fff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.264.058 2.148.243 2.91.564.77.32 1.374.927 1.696 1.696.32.762.506 1.646.564 2.91.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.058 1.264-.244 2.148-.564 2.91-.322.77-.927 1.374-1.696 1.696-.762.32-1.646.506-2.91.564-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.264-.058-2.148-.244-2.91-.564-.77-.322-1.374-.927-1.696-1.696-.32-.762-.506-1.646-.564-2.91-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.058-1.264.243-2.148.564-2.91.32-.77.927-1.374 1.696-1.696.762-.32 1.646-.506 2.91-.564C8.416 2.175 8.796 2.163 12 2.163zm0 1.623c-3.14 0-3.5.013-4.73.07-1.107.05-1.707.228-2.108.393-.532.217-.91.595-1.128 1.128-.165.4-.344 1-.393 2.108-.057 1.23-.07 1.59-.07 4.73s.013 3.5.07 4.73c.05 1.107.228 1.707.393 2.108.217.532.595.91 1.128 1.128.4.165 1 .344 2.108.393 1.23.057 1.59.07 4.73.07s3.5-.013 4.73-.07c1.107-.05 1.707-.228 2.108-.393.532-.217.91-.595 1.128-1.128.165-.4.344-1 .393-2.108.057-1.23.07-1.59.07-4.73s-.013-3.5-.07-4.73c-.05-1.107-.228-1.707-.393-2.108-.217-.532-.595-.91-1.128-1.128-.4-.165-1-.344-2.108-.393-1.23-.057-1.59-.07-4.73-.07zm0 3.297c-2.574 0-4.665 2.09-4.665 4.665s2.09 4.665 4.665 4.665 4.665-2.09 4.665-4.665-2.09-4.665-4.665-4.665zm0 7.73c-1.693 0-3.065-1.372-3.065-3.065s1.372-3.065 3.065-3.065 3.065 1.372 3.065 3.065-1.372 3.065-3.065 3.065zm6.406-7.845c0 .6-.485 1.085-1.085 1.085s-1.085-.485-1.085-1.085.485-1.085 1.085-1.085 1.085.485 1.085 1.085z"/></svg>
-          </a>
-          <a href="https://tiktok.com/@nuklal" target="_blank" aria-label="TikTok">
-            <svg width="24" height="24" fill="#fff"><path d="M19 0h-5.5c.7 1.2 1.1 2.6 1.1 4.1v4.1h4.1v4.1h-4.1v8.2c0 1.4-.3 2.7-.8 3.9-.5 1.2-1.2 2.2-2.1 3-.9.8-2 1.4-3.2 1.8-1.2.4-2.5.6-3.9.6-1.4 0-2.7-.2-3.9-.6-1.2-.4-2.3-1-3.2-1.8-.9-.8-1.6-1.8-2.1-3-.5-1.2-.8-2.5-.8-3.9V8.2H0V4.1h4.1V0h4.1v4.1c0-1.5.4-2.9 1.1-4.1H19z"/></svg>
-          </a>
-          <a href="https://pinterest.com/nuklal" target="_blank" aria-label="Pinterest">
-            <svg width="24" height="24" fill="#fff"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.083 3.163 9.426 7.627 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.719-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.347-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.695-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.744-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-          </a>
-        </div>
+      <div><h3>Nuklal</h3><p>nous méritons le meilleur</p></div>
+      <div><h3>Liens utiles</h3><ul><li><a href="#home">Accueil</a></li><li><a href="#products">Produits</a></li><li><a href="cgv.html">CGV</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h3>Mentions légales</h3><ul><li><strong>Éditeur :</strong> Yacine B.</li><li><strong>Email :</strong> <a href="mailto:contact@nuklal.com">contact@nuklal.com</a></li><li><strong>Hébergeur :</strong> GitHub, Inc. – USA</li></ul></div>
+      <div><h3>Suivez-nous</h3>
+        <div style="display:flex;gap:.8rem"><a href="https://instagram.com/nuklal" target="_blank">📸</a><a href="https://tiktok.com/@nuklal" target="_blank">🎵</a><a href="https://pinterest.com/nuklal" target="_blank">📌</a></div>
       </div>
     </div>
-    <div class="footer-bottom">
-      © 2025 Nuklal – Tous droits réservés.
-    </div>
+    <div class="footer-bottom">© 2025 Nuklal – Tous droits réservés.</div>
   </footer>
 
-  <!-- Snipcart -->
+  <!-- Scripts -->
   <script src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js" async></script>
   <div hidden id="snipcart"
        data-api-key="YTBjMTIyZDUtMmI5Ni00NjNlLTliYWUtYjI0NjM1OTMwYzRmNjM4ODkxNzA0MDQ3MjU1NzM5"
        data-currency="chf"
        data-locale="fr"></div>
 
-  <!-- JS menu mobile + filtres + toast -->
   <script>
+    /* Menu mobile */
     function toggleMenu() {
       const nav = document.getElementById('navLinks');
       nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
     }
 
+    /* Mode sombre/clair */
+    const toggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      root.style.setProperty('--black', '#fff');
+      root.style.setProperty('--gold', '#b8860b');
+      root.style.setProperty('--gray', '#f5f5f5');
+      document.body.style.background = '#fff';
+      document.body.style.color = '#111';
+      toggle.textContent = '☀️';
+    }
+    toggle.addEventListener('click', () => {
+      const isDark = root.style.getPropertyValue('--black') === '#fff';
+      root.style.setProperty('--black', isDark ? '#111' : '#fff');
+      root.style.setProperty('--gold', isDark ? '#d4af37' : '#b8860b');
+      root.style.setProperty('--gray', isDark ? '#222' : '#f5f5f5');
+      document.body.style.background = isDark ? '#111' : '#fff';
+      document.body.style.color = isDark ? '#fff' : '#111';
+      toggle.textContent = isDark ? '🌙' : '☀️';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+
+    /* Filtres, tri, stock + wishlist */
     const cards = [...document.querySelectorAll('.card')];
     const filterCategory = document.getElementById('filterCategory');
     const priceRange = document.getElementById('priceRange');
     const priceValue = document.getElementById('priceValue');
     const filterColor = document.getElementById('filterColor');
     const filterSize = document.getElementById('filterSize');
+    const sortBy = document.getElementById('sortBy');
+    const stockFilter = document.getElementById('stockFilter');
+    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-    function filterProducts() {
+    function update() {
       const category = filterCategory.value;
       const maxPrice = parseInt(priceRange.value);
       const color = filterColor.value;
       const size = filterSize.value;
+      const stock = stockFilter.value;
+      const sort = sortBy.value;
       priceValue.textContent = maxPrice + ' CHF';
 
-      cards.forEach(card => {
+      let list = cards.filter(card => {
         const cat = card.dataset.category;
         const price = parseInt(card.dataset.price);
         const col = card.dataset.color;
         const sz = card.dataset.size;
-        const matchCat = category === 'all' || cat === category;
-        const matchPrice = price <= maxPrice;
-        const matchColor = color === 'all' || col.includes(color);
-        const matchSize = size === 'all' || sz.includes(size);
-        card.style.display = (matchCat && matchPrice && matchColor && matchSize) ? 'flex' : 'none';
+        const st = card.dataset.stock;
+        return (
+          (category === 'all' || cat === category) &&
+          price <= maxPrice &&
+          (color === 'all' || col.includes(color)) &&
+          (size === 'all' || sz.includes(size)) &&
+          (stock === 'all' || st === stock)
+        );
       });
+
+      if (sort === 'price') list.sort((a, b) => parseInt(a.dataset.price) - parseInt(b.dataset.price));
+      if (sort === 'pop') list.sort((a, b) => parseInt(b.dataset.pop) - parseInt(a.dataset.pop));
+
+      cards.forEach(c => { c.classList.remove('show'); c.style.display = 'none'; });
+      list.forEach(c => { c.style.display = 'flex'; c.classList.add('show'); });
     }
-    [filterCategory, priceRange, filterColor, filterSize].forEach(el =>
-      el.addEventListener('input', filterProducts)
+
+    [filterCategory, priceRange, filterColor, filterSize, sortBy, stockFilter].forEach(el =>
+      el.addEventListener('input', update)
     );
 
-    /* Toast "Ajouté au panier" */
+    /* Wishlist */
+    document.addEventListener('click', e => {
+      if (e.target.classList.contains('wish-btn')) {
+        const id = e.target.dataset.id;
+        const idx = wishlist.indexOf(id);
+        if (idx === -1) { wishlist.push(id); e.target.textContent = '♥'; }
+        else { wishlist.splice(idx, 1); e.target.textContent = '♡'; }
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      }
+    });
+    /* Toast + scroll reveal */
+    const observer = new IntersectionObserver(entries => entries.forEach(e => e.target.classList.add('show')));
+    cards.forEach(c => observer.observe(c));
+
     document.addEventListener('click', e=>{
       if(e.target.classList.contains('snipcart-add-item')){
         const toast = document.getElementById('toast') || (()=>{
@@ -431,6 +375,7 @@
         setTimeout(()=>toast.classList.remove('show'),2500);
       }
     });
+    update();
   </script>
 </body>
 </html>
