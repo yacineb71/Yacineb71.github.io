@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mon compte – Nuklal</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 { color: #d4af37; margin-bottom: .5rem; }
+    #dashboard { margin: 1rem 0; }
+    button {
+      background: #d4af37;
+      color: #111;
+      border: none;
+      padding: .75rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bienvenue <span id="userName">…</span> 👋</h1>
+  <div id="dashboard">
+    <p>Commandes en cours : <strong id="orders">0</strong></p>
+    <p>Points fidélité : <strong id="points">0</strong></p>
+    <p>Code exclusif : <strong id="code">MEMBER10</strong></p>
+  </div>
+  <button onclick="logout()">Déconnexion</button>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script>
+    const sb = supabase.createClient(
+      'https://votre-projet.supabase.co',
+      'votre-clé-publique'
+    );
+    async function checkUser() {
+      const { data: { user } } = await sb.auth.getUser();
+      if (!user) window.location = 'login.html';
+      document.getElementById('userName').textContent = user.email.split('@')[0];
+      document.getElementById('orders').textContent = Math.floor(Math.random() * 5);
+      document.getElementById('points').textContent = Math.floor(Math.random() * 200);
+    }
+    async function logout() {
+      await sb.auth.signOut();
+      window.location = 'login.html';
+    }
+    checkUser();
+  </script>
+</body>
+</html>
