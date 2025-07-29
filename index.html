@@ -58,7 +58,126 @@
     <p>nous méritons le meilleur</p>
   </header>
 </header>
+</header>
 
+<!-- =========================
+     FILTRES AVANT GRILLE PRODUITS
+============================ -->
+<section style="padding:1rem 2rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+  <label>Filtrer :
+    <select id="filterCategory">
+      <option value="all">Tous</option>
+      <option value="tshirt">T-shirt</option>
+      <option value="hoodie">Hoodie</option>
+      <option value="sneakers">Sneakers</option>
+      <option value="accessoire">Accessoire</option>
+    </select>
+  </label>
+
+  <label>Prix max :
+    <input type="range" id="priceRange" min="0" max="100" value="100">
+    <span id="priceValue">100 CHF</span>
+  </label>
+</section>
+
+<!-- =========================
+     GRILLE PRODUITS
+============================ -->
+<section id="products" class="products">
+  <div class="product-grid" id="productGrid">
+    <!-- T-shirt -->
+    <div class="card" data-category="tshirt" data-price="39">
+      <img src="https://i.imgur.com/X8jQh7b.png" alt="T-shirt Oversize Noir">
+      <h2>T-shirt Oversize Noir</h2>
+      <p class="price">39 CHF</p>
+      <button class="snipcart-add-item"
+              data-item-id="tshirt"
+              data-item-price="39"
+              data-item-name="T-shirt Oversize Noir"
+              data-item-image="https://i.imgur.com/X8jQh7b.png"
+              data-item-url="https://nuklal.com">Acheter</button>
+    </div>
+
+    <!-- Sneakers -->
+    <div class="card" data-category="sneakers" data-price="89">
+      <img src="https://i.imgur.com/7ZtVfXk.png" alt="Sneakers">
+      <h2>Sneakers Minimalistes</h2>
+      <p class="price">89 CHF</p>
+      <button class="snipcart-add-item"
+              data-item-id="sneakers"
+              data-item-price="89"
+              data-item-name="Sneakers Minimalistes"
+              data-item-image="https://i.imgur.com/7ZtVfXk.png"
+              data-item-url="https://nuklal.com">Acheter</button>
+    </div>
+
+    <!-- Casquette -->
+    <div class="card" data-category="accessoire" data-price="25">
+      <img src="https://i.imgur.com/L3cJh4R.png" alt="Casquette">
+      <h2>Casquette Noir/Or</h2>
+      <p class="price">25 CHF</p>
+      <button class="snipcart-add-item"
+              data-item-id="cap"
+              data-item-price="25"
+              data-item-name="Casquette Noir/Or"
+              data-item-image="https://i.imgur.com/L3cJh4R.png"
+              data-item-url="https://nuklal.com">Acheter</button>
+    </div>
+
+    <!-- Sac -->
+    <div class="card" data-category="accessoire" data-price="59">
+      <img src="https://i.imgur.com/M9kL5zU.png" alt="Sac">
+      <h2>Sac Bandoulière</h2>
+      <p class="price">59 CHF</p>
+      <button class="snipcart-add-item"
+              data-item-id="bag"
+              data-item-price="59"
+              data-item-name="Sac Bandoulière"
+              data-item-image="https://i.imgur.com/M9kL5zU.png"
+              data-item-url="https://nuklal.com">Acheter</button>
+    </div>
+
+    <!-- Hoodie -->
+    <div class="card" data-category="hoodie" data-price="69">
+      <img src="https://i.imgur.com/F5tQ9sA.png" alt="Hoodie">
+      <h2>Hoodie Oversize</h2>
+      <p class="price">69 CHF</p>
+      <button class="snipcart-add-item"
+              data-item-id="hoodie"
+              data-item-price="69"
+              data-item-name="Hoodie Oversize"
+              data-item-image="https://i.imgur.com/F5tQ9sA.png"
+              data-item-url="https://nuklal.com">Acheter</button>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     SCRIPT FILTRAGE
+============================ -->
+<script>
+  const cards = [...document.querySelectorAll('.card')];
+  const filterCategory = document.getElementById('filterCategory');
+  const priceRange = document.getElementById('priceRange');
+  const priceValue = document.getElementById('priceValue');
+
+  function filterProducts() {
+    const category = filterCategory.value;
+    const maxPrice = parseInt(priceRange.value);
+    priceValue.textContent = maxPrice + ' CHF';
+
+    cards.forEach(card => {
+      const cat = card.dataset.category;
+      const price = parseInt(card.dataset.price);
+      const matchCat = category === 'all' || cat === category;
+      const matchPrice = price <= maxPrice;
+      card.style.display = matchCat && matchPrice ? 'flex' : 'none';
+    });
+  }
+
+  filterCategory.addEventListener('change', filterProducts);
+  priceRange.addEventListener('input', filterProducts);
+</script>
 <!-- Filtres produits -->
 <section style="padding:1rem 2rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
   <label>Filtrer :
@@ -210,6 +329,29 @@
       const nav = document.getElementById('navLinks');
       nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
     }
+  </script>
+  <script>
+  const cards = [...document.querySelectorAll('.card')];
+  const filterCategory = document.getElementById('filterCategory');
+  const priceRange = document.getElementById('priceRange');
+  const priceValue = document.getElementById('priceValue');
+
+  function filterProducts() {
+    const category = filterCategory.value;
+    const maxPrice = parseInt(priceRange.value);
+    priceValue.textContent = maxPrice + " CHF";
+
+    cards.forEach(card => {
+      const cat = card.dataset.category;
+      const price = parseInt(card.dataset.price);
+      const matchCat = category === 'all' || cat === category;
+      const matchPrice = price <= maxPrice;
+      card.style.display = matchCat && matchPrice ? 'flex' : 'none';
+    });
+  }
+
+  filterCategory.addEventListener('change', filterProducts);
+  priceRange.addEventListener('input', filterProducts);
   </script>
 </body>
 </html>
