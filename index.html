@@ -126,6 +126,33 @@
     #toast.show{transform:translateX(-50%) translateY(0);opacity:1}
   </style>
 </head>
+  <script>
+  const toggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const saved = localStorage.getItem('theme');
+
+  if (saved === 'dark') {
+    root.style.setProperty('--black', '#fff');
+    root.style.setProperty('--gold', '#b8860b');
+    root.style.setProperty('--gray', '#f5f5f5');
+    root.style.setProperty('--light', '#222');
+    document.body.style.background = '#fff';
+    document.body.style.color = '#111';
+    toggle.textContent = '☀️';
+  }
+
+  toggle.addEventListener('click', () => {
+    const isDark = root.style.getPropertyValue('--black') === '#fff';
+    root.style.setProperty('--black', isDark ? '#111' : '#fff');
+    root.style.setProperty('--gold', isDark ? '#d4af37' : '#b8860b');
+    root.style.setProperty('--gray', isDark ? '#222' : '#f5f5f5');
+    root.style.setProperty('--light', isDark ? '#f5f5f5' : '#222');
+    document.body.style.background = isDark ? '#111' : '#fff';
+    document.body.style.color = isDark ? '#fff' : '#111';
+    toggle.textContent = isDark ? '🌙' : '☀️';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  });
+  </script>
 <body>
   <!-- Navbar -->
   <nav>
