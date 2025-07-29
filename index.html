@@ -135,5 +135,76 @@
     </div>
   </section>
 
-  <!-- À propos -->
-  <section
+   <!-- À propos -->
+  <section id="about" style="padding:2rem 1rem;max-width:800px;margin:auto;text-align:center">
+    <h2>À propos</h2>
+    <p>Nuklal, c’est la conviction que nous méritons tous le meilleur : des pièces uniques, des matériaux de qualité, une livraison rapide.<br>
+    Notre boutique en ligne vous propose une sélection pointue de vêtements et accessoires, livrés en Suisse et dans le monde entier.</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="padding:2rem 1rem;max-width:600px;margin:auto">
+    <h2>Contact</h2>
+    <form action="https://formspree.io/f/xrblkogl" method="POST" style="display:grid;gap:1rem">
+      <label>Nom
+        <input type="text" name="nom" required>
+      </label>
+      <label>Email
+        <input type="email" name="email" required>
+      </label>
+      <label>Message
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h3>Nuklal</h3>
+        <p>nous méritons le meilleur</p>
+      </div>
+      <div>
+        <h3>Liens utiles</h3>
+        <ul>
+          <li><a href="#home">Accueil</a></li>
+          <li><a href="#products">Produits</a></li>
+          <li><a href="cgv.html" target="_blank">CGV</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Mentions légales</h3>
+        <ul>
+          <li><strong>Éditeur :</strong> Yacine B.</li>
+          <li><strong>Email :</strong> <a href="mailto:contact@nuklal.com">contact@nuklal.com</a></li>
+          <li><strong>Hébergeur :</strong> GitHub, Inc. – USA</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Suivez-nous</h3>
+        <a href="https://instagram.com/nuklal" target="_blank" rel="noopener">📸 Instagram</a><br>
+        <a href="https://tiktok.com/@nuklal" target="_blank" rel="noopener">🎵 TikTok</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Nuklal – Tous droits réservés.</div>
+  </footer>
+
+  <!-- Snipcart -->
+  <script src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js" async></script>
+  <div hidden id="snipcart"
+       data-api-key="YTBjMTIyZDUtMmI5Ni00NjNlLTliYWUtYjI0NjM1OTMwYzRmNjM4ODkxNzA0MDQ3MjU1NzM5"
+       data-currency="chf"
+       data-locale="fr"></div>
+
+  <!-- Menu mobile JS -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    }
+  </script>
+</body>
+</html>
